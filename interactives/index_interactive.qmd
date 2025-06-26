@@ -1,0 +1,43 @@
+---
+title: "r4dss25"
+format: html
+editor: visual
+engine: knitr
+execute:
+  freeze: false
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+tutorial_options(exercise.checker = gradethis::grade_learnr)
+```
+
+## Welcome to R for Data Science and Statistics 2025
+
+This year, we will be experimenting with delivering interactive R exercises! All interactive materials will also be accessible via our GitHub website as static pages. You can navigate the classes below from the menu on the left. You can also download each interactive exercise under each class
+
+#### R and RStudio installation
+
+'R' you ready to use R? If not, please follow <https://rstudio-education.github.io/hopr/starting.html>, reviewing the instructions for your OS.
+
+#### Structure of the interactive exercises
+
+When you download the interactive exercise, you will notice that the file has a .qmd extension. This is a *Q*uarto *m*arkdown *f*ile. Markdown files provide the flexibility to embed blocks of code with formatted text. When rendered, the exercises will run from your device.
+
+Before running the sessions, we'd suggest creating a dedicated folder repository on your device with subfolders per exercise. Then,
+
+1.  Download the .qmd file into the class' subfolder
+
+2.  If a dataset is required, you will see a link to it underneath the interactive exercise. Download it into the class subfolder
+
+3.  Open the .qmd file in RStudio and change the **filepath** to the subfolder's directory. *Hint* On Windows and Mac, if you navigate to File Explorer (Windows) or Finder (Mac), you can copy and paste the directory straight into R. You will need to replace backward slashes in your pasted Windows directory with forward slashes (i.e. \`C:\\Users\\\` to `C:/Users/` )
+
+4.  Render the file by clicking "Render" in the upper panel to the right of the magnifying glass icon. This will create an output that
+
+    Let's test it out! Below you find a download link to this document. Please try rendering the file as an HTML file on your local device and complete the exercise below. Fix the code to return three random numbers between 101 and 200
+
+```{r test, exercise=TRUE,echo=TRUE}
+r <- sample(1:100, 1, replace=FALSE)
+r
+```
