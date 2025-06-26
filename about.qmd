@@ -1,0 +1,49 @@
+---
+title: "about"
+format: pdf
+---
+
+## Welcome to R for Data Science and Statistics 2025
+
+This year, we will be experimenting with delivering interactive R course exercises. All interactive materials will al
+
+::: {.callout-note icon="false"}
+
+------------------------------------------------------------------------
+
+title: "Introduction to R with learnr"
+
+format: html
+
+editor: visual
+
+engine: knitr
+
+runtime: shiny_prerendered
+
+------------------------------------------------------------------------
+
+You can run the code in the embedded R consoles and answer questions directly within this document.
+:::
+
+------------------------------------------------------------------------
+
+## Basic R Expressions
+
+Try evaluating a simple arithmetic expression in the code editor below:
+
+```{r}
+1 + 1
+```
+
+------------------------------------------------------------------------
+
+## Variables and Assignment
+
+Use `<-` to assign a value to a variable. Try assigning `10` to a variable named `x`:
+
+```{r}
+x <- 3
+```
+
+------------------------------------------------------------------------
