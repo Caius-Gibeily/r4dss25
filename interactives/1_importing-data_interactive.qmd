@@ -1,0 +1,113 @@
+---
+title: "1 Importing data"
+format: html
+editor: visual
+engine: knitr
+runtime: shiny_prerendered
+---
+
+# Introduction
+
+#### Load a CSV File
+
+In this tutorial, we'll cover two key objectives:
+
+-   How to pre-format your dataset in a spreadsheet editor like Excel and save it as a csv file
+
+-   Using the **readr** package from the tidyverse to import the dataset into R using `read.csv()`
+
+```{r setup, include=FALSE}
+library(learnr)
+tutorial_options(exercise.checker = gradethis::grade_learnr)
+```
+
+```{r}
+#install.packages(c("learnr","webr","tidyverse")) # comment out after installing
+library(tidyverse)
+library(webr)
+knitr::opts_chunk$set(echo = TRUE, eval = TRUE)
+```
+
+### 1. Saving data into an importable format
+
+Preformatting your data in a spreadsheet editor like Excel or LibreOffice Calc is a great way to start working with data in R. But how should the data be formatted and through what wizardry are they imported into R? Ideally, you'd like to do most of your data manipulations, summary statistics and analyses in a programming language like R, rather than in Excel. The power of excel is the ability to organise your dataset interactively. A few key principles will help guide how you should prepare your dataset before importing into R
+
+1.  Make sure your headers do not contain problematic characters or duplicate names. What are problematic characters? Punctuation marks (i.e. `!,?,:` ), letters with accents. These characters may distort how R reads the header names. Best practice is to use clear, all lower-case header titles
+
+2.  Ensure that data entries are tabulated in rows and data fields (i.e. variables) are in columns. One should be able to query any data entry and access its fields (in theory at least)
+
+3.  If you have missing values, don't panic! Just don't replace them with `0`. If you have continuous data, 0 entries may be ambiguous since 0 is a valid answer. The entry may be left blank; R will interpret these blanks as NAs (not applicables). Alternatively, when reading in data, you can tell R to set particular values as NAs
+
+    ![](images/clipboard-2422611511.png){width="400"}
+
+Take a look at this small dataset of six languages, the number of fluent speakers and a binary variable indicating whether the language is natural or constructed.
+
+```{r quiz}
+question("If you were to import this into R, which aspects might cause problems?",
+    answer("Spaces in second column title", correct = TRUE),
+    answer("Special character in third column title",correct=TRUE),
+    answer("Missing data for Lojban", correct = FALSE),
+    answer("Numeric values with commas", correct = FALSE),
+    answer("Uppercase characters",correct=TRUE),
+    incorrect = "Incorrect. You're on Earth, in the Milky Way, at a computer.", allow_retry = TRUE
+  )
+```
+
+A better format would be
+
+![](images/clipboard-3742522558.png){width="400"}
+
+We now notice that all the headers are written lowercase now with a removal of the space in the second header title. We have also recoded the natural columns to 1s and 0s since this column represents a Boolean (yes/no) variable. When the dataset is loaded, we can then ensure R reads it as a Boolean (or logical) variable by using `data$natural <- as.logical(data$natural)`.
+
+If you were to save this spreadsheet now, by default Excel would export it with a proprietary .xlsx extension that includes unnecessary formatting information. Instead, select "Save a copy" and scroll down to \*.csv, saving the .csv file in your data repo
+
+![](images/clipboard-2651016527.png){width="600"}
+
+### 2. Importing CSV files with `read_csv()`
+
+Let's try reading in a sample dataset. Data were collected by Dr. Kristen Gorman and the Palmer Station, Antarctica, showing three species of penguin. You can learn more about the data here: <https://allisonhorst.github.io/palmerpenguins/>
+
+For .tsv (tab-separated files), `read_tsv()` may be used and `read_csv2()` if the data are semicolon-separated. Sometimes the file may contain lines of metadata. These lines may be skipped by specifying `skip=n`. If NAs have been encoded with a specific value, say `.`, just add an extra argument `na = .` to instruct R in which values to treat as NAs. Finally, if the dataset lacks column names, an extra argument, `col_names=FALSE` may be added. R will then read in the data with headers labelled `{X1...Xn}`
+
+```{r loadin, exercise=TRUE,echo=TRUE}
+penguins <- read_csv("https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/inst/extdata/penguins.csv")
+```
+
+There are different ways of interrogating the data you have imported. Some of these functions are `head()`, `tail()` and `str()`. Try out some of these yourself!
+
+```{r vis, exercise=TRUE,echo=TRUE}
+head(penguins)
+```
+
+### 
+
+### Quiz: Which function loads a CSV file?
+
+```{r quiz-readdata, echo=FALSE}
+quiz(caption = "Importing data",
+  question("What does the function read_csv() do?",
+  answer("It exports an R dataframe to a CSV file."),
+  answer("It imports a CSV file as an R dataframe.", correct = TRUE),
+  answer("  It cleans missing values in a CSV file."),
+  answer("  It plots a CSV file."), allow_retry = TRUE, random_answer_order = TRUE
+),
+  question("If your dataset contains missing values (NAs), how should you handle them? (select all that apply)",
+    answer("Recode NaNs as 0", correct = TRUE),
+    answer("Omit rows containing missing data"),
+    answer("Instruct R in which values to treat as NAs when importing data", correct = TRUE),
+    answer("In the Milky Way", correct = TRUE),allow_retry = TRUE, random_answer_order = TRUE
+    
+  )
+)
+
+```
+
+### Challenge assignment
+
+Use what you've learned to import this dataset from the web and calculate the average `flipper_length_mm`. Hint: after `read_csv()`, use mean() to calculate the average flipper_length. You can select a column using \$ notation, i.e. penguins\$flipper_length_mm. Don’t forget to assign the result to a variable!
+
+`https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/inst/extdata/penguins.csv`
+
+```{r challenge, exercise = TRUE}
+
+```
