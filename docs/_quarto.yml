@@ -3,7 +3,7 @@ project:
 
 website:
   title: "Data Science and Statistics in R for Fellowship"
-  repo-url: https://github.com/Caius-Gibeily/r-training-fellowship
+  repo-url: https://github.com/Caius-Gibeily/r4dss25.github.io
   repo-actions: [edit, issue]
   repo-subdir: "docs"
   page-navigation: true
