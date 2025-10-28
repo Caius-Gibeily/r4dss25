@@ -1,7 +1,0 @@
----
-title: "intro"
-format: html
-editor: visual
----
-
-Hello world

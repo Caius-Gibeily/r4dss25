@@ -1,8 +1,4 @@
-.DS_Store
-*_files
-*.html
-/template.ipynb
-/.luarc.json
-_site
-node_modules
 .Rproj.user
+.Rhistory
+.RData
+.Ruserdata
