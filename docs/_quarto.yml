@@ -1,0 +1,21 @@
+project:
+  type: website
+
+website:
+  title: "Data Science and Statistics in R for Fellowship"
+  repo-url: https://github.com/Caius-Gibeily/r-training-fellowship
+  repo-actions: [edit, issue]
+  repo-subdir: "docs"
+  page-navigation: true
+  sidebar:
+    contents:
+
+      - href: index.qmd
+      - section: Introduction to Statistics in R
+        contents:
+        - section: Welcome to R4DSS25
+          - intro.qmd
+
+theme:
+  light: cosmo
+  dark: darkly
