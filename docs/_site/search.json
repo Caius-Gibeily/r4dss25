@@ -4,33 +4,21 @@
     "href": "reference/document-yaml.html",
     "title": "Document YAML Options",
     "section": "",
-    "text": "The quarto-live extension can be configured using YAML options. There are three main option keys of interest: webr, pyodide and live.\nFor a single document, the config options can be set at the top level in your document’s YAML front matter. For Quarto projects, the options should be set under the live- format key to ensure that Quarto’s project-level metadata merging is successful.",
-    "crumbs": [
-      "Reference",
-      "Document YAML Options"
-    ]
+    "text": "The quarto-live extension can be configured using YAML options. There are three main option keys of interest: webr, pyodide and live.\nFor a single document, the config options can be set at the top level in your document’s YAML front matter. For Quarto projects, the options should be set under the live- format key to ensure that Quarto’s project-level metadata merging is successful."
   },
   {
     "objectID": "reference/document-yaml.html#options-reference",
     "href": "reference/document-yaml.html#options-reference",
     "title": "Document YAML Options",
     "section": "Options Reference",
-    "text": "Options Reference\n\nwebr\n\n\n\n\n\n\n\n\nYAML Key\nType\nDescription\n\n\n\n\ncell-options\nObject\nCode cell options to be applied to all webr blocks in the document.\n\n\nengine-url\nString\nURL from which to load the webR WebAssembly engine, e.g. https://repo.r-wasm.org/v0.4.0/.\n\n\npackages\nArray\nList of R packages to install automatically.\n\n\nrender-df\nString\nMethod used to render data.frame objects.\n\n\nrepos\nArray\nList of CRAN-like repos from which to install R packages.\n\n\nresources\nArray\nResources to be loaded into the webR VFS. Defaults to all resources.\n\n\n\n\n\npyodide\n\n\n\n\n\n\n\n\nYAML Key\nType\nDescription\n\n\n\n\ncell-options\nObject\nCode cell options to be applied to all pyodide blocks in the document.\n\n\nengine-url\nString\nURL from which to load the Pyodide WebAssembly engine, e.g. https://cdn.jsdelivr.net/pyodide/v0.26.1/full/.\n\n\npackages\nArray\nList of Python packages to install automatically.\n\n\nresources\nArray\nResources to be loaded into the Pyodide VFS. Defaults to all resources.\n\n\n\n\n\nlive\n\n\n\n\n\n\n\n\nYAML Key\nType\nDescription\n\n\n\n\nshow-hints\nBoolean\nInclude exercise hints in document output.\n\n\nshow-solutions\nBoolean\nInclude exercise solutions in document output.\n\n\nshow-grading\nBoolean\nInclude exercise grading in document output.",
-    "crumbs": [
-      "Reference",
-      "Document YAML Options"
-    ]
+    "text": "Options Reference\n\nwebr\n\n\n\n\n\n\n\n\nYAML Key\nType\nDescription\n\n\n\n\ncell-options\nObject\nCode cell options to be applied to all webr blocks in the document.\n\n\nengine-url\nString\nURL from which to load the webR WebAssembly engine, e.g. https://repo.r-wasm.org/v0.4.0/.\n\n\npackages\nArray\nList of R packages to install automatically.\n\n\nrender-df\nString\nMethod used to render data.frame objects.\n\n\nrepos\nArray\nList of CRAN-like repos from which to install R packages.\n\n\nresources\nArray\nResources to be loaded into the webR VFS. Defaults to all resources.\n\n\n\n\n\npyodide\n\n\n\n\n\n\n\n\nYAML Key\nType\nDescription\n\n\n\n\ncell-options\nObject\nCode cell options to be applied to all pyodide blocks in the document.\n\n\nengine-url\nString\nURL from which to load the Pyodide WebAssembly engine, e.g. https://cdn.jsdelivr.net/pyodide/v0.26.1/full/.\n\n\npackages\nArray\nList of Python packages to install automatically.\n\n\nresources\nArray\nResources to be loaded into the Pyodide VFS. Defaults to all resources.\n\n\n\n\n\nlive\n\n\n\n\n\n\n\n\nYAML Key\nType\nDescription\n\n\n\n\nshow-hints\nBoolean\nInclude exercise hints in document output.\n\n\nshow-solutions\nBoolean\nInclude exercise solutions in document output.\n\n\nshow-grading\nBoolean\nInclude exercise grading in document output."
   },
   {
     "objectID": "reference/document-yaml.html#example",
     "href": "reference/document-yaml.html#example",
     "title": "Document YAML Options",
     "section": "Example",
-    "text": "Example\nA fully-configured document might look something like this:\n\n\nlive-document.qmd\n\n---\ntitle: An Example\nformat:\n  live-html:\n    webr:\n      packages:\n        - ggplot2\n        - mypackage\n      repos:\n        - https://myrepo.example.com/\n    pyodide:\n      cell-options:\n        edit: false\n      packages:\n        - matplotlib\n    live:\n      show-solutions: false\nresources: datadir\n---",
-    "crumbs": [
-      "Reference",
-      "Document YAML Options"
-    ]
+    "text": "Example\nA fully-configured document might look something like this:\n\n\nlive-document.qmd\n\n---\ntitle: An Example\nformat:\n  live-html:\n    webr:\n      packages:\n        - ggplot2\n        - mypackage\n      repos:\n        - https://myrepo.example.com/\n    pyodide:\n      cell-options:\n        edit: false\n      packages:\n        - matplotlib\n    live:\n      show-solutions: false\nresources: datadir\n---"
   },
   {
     "objectID": "other/tables.html",
@@ -735,33 +723,21 @@
     "href": "reference/cell-options.html",
     "title": "Code Cell Options",
     "section": "",
-    "text": "The following code cell options can be used in webr or pyodide blocks, or set for an entire document using the cell-options key in the document YAML options.",
-    "crumbs": [
-      "Reference",
-      "Code Cell Options"
-    ]
+    "text": "The following code cell options can be used in webr or pyodide blocks, or set for an entire document using the cell-options key in the document YAML options."
   },
   {
     "objectID": "reference/cell-options.html#interactive-code-blocks",
     "href": "reference/cell-options.html#interactive-code-blocks",
     "title": "Code Cell Options",
     "section": "Interactive code blocks",
-    "text": "Interactive code blocks\n\n\n\n\n\n\n\n\nOption\nDefault\nDescription\n\n\n\n\nautorun\nfalse\nEvaluate initial code block contents automatically?\n\n\ncaption\nNone\nHeading text for code editor block.\n\n\ncompletion\ntrue\nShow code completion and suggestions in editor?\n\n\necho\nfalse\nShow source code in output display?\n\n\nedit\ntrue\nShow the code editor? If false, a read-only code block is shown.\n\n\nenvir\n\"global\"\nLabel for execution environment.\n\n\nerror\ntrue\nContinue execution after an error?\n\n\neval\ntrue\nEvaluate code using WebAssembly engine?\n\n\nfig-width\n7\nWidth of graphics output in “inches”.\n\n\nfig-height\n5\nHeight of graphics output in “inches”.\n\n\nfig-dpi\n5\nDPI of graphics output (Pyodide only).\n\n\ninclude\ntrue\nInclude this code block in the document?\n\n\npersist\nfalse\nPersist changes in the editor to browser’s local storage?\n\n\noutput\ntrue\nDisplay execution output in the document?\n\n\nrunbutton\ntrue\nShow the “Run Code” button? If false, code is immediately evaluated.\n\n\nstartover\ntrue\nShow the “Start Over” button?\n\n\ntimelimit\n30\nExecution time limit in seconds.\n\n\nwarning\ntrue\nShow warning messages?\n\n\nmin-lines\n0\nMinimum editor height in number of lines.\n\n\nmax-lines\nInfinity\nMaximum editor height in number of lines.",
-    "crumbs": [
-      "Reference",
-      "Code Cell Options"
-    ]
+    "text": "Interactive code blocks\n\n\n\n\n\n\n\n\nOption\nDefault\nDescription\n\n\n\n\nautorun\nfalse\nEvaluate initial code block contents automatically?\n\n\ncaption\nNone\nHeading text for code editor block.\n\n\ncompletion\ntrue\nShow code completion and suggestions in editor?\n\n\necho\nfalse\nShow source code in output display?\n\n\nedit\ntrue\nShow the code editor? If false, a read-only code block is shown.\n\n\nenvir\n\"global\"\nLabel for execution environment.\n\n\nerror\ntrue\nContinue execution after an error?\n\n\neval\ntrue\nEvaluate code using WebAssembly engine?\n\n\nfig-width\n7\nWidth of graphics output in “inches”.\n\n\nfig-height\n5\nHeight of graphics output in “inches”.\n\n\nfig-dpi\n5\nDPI of graphics output (Pyodide only).\n\n\ninclude\ntrue\nInclude this code block in the document?\n\n\npersist\nfalse\nPersist changes in the editor to browser’s local storage?\n\n\noutput\ntrue\nDisplay execution output in the document?\n\n\nrunbutton\ntrue\nShow the “Run Code” button? If false, code is immediately evaluated.\n\n\nstartover\ntrue\nShow the “Start Over” button?\n\n\ntimelimit\n30\nExecution time limit in seconds.\n\n\nwarning\ntrue\nShow warning messages?\n\n\nmin-lines\n0\nMinimum editor height in number of lines.\n\n\nmax-lines\nInfinity\nMaximum editor height in number of lines."
   },
   {
     "objectID": "reference/cell-options.html#exercises",
     "href": "reference/cell-options.html#exercises",
     "title": "Code Cell Options",
     "section": "Exercises",
-    "text": "Exercises\n\n\n\n\n\n\n\n\nOption\nDefault\nDescription\n\n\n\n\ncheck\nfalse\nCreate exercise grading algorithm.\n\n\nexercise\nNone\nExercise label.\n\n\nhint\nfalse\nCreate exercise hint block.\n\n\nsetup\nfalse\nCreate exercise setup block.\n\n\nsolution\nfalse\nCreate exercise solution block.",
-    "crumbs": [
-      "Reference",
-      "Code Cell Options"
-    ]
+    "text": "Exercises\n\n\n\n\n\n\n\n\nOption\nDefault\nDescription\n\n\n\n\ncheck\nfalse\nCreate exercise grading algorithm.\n\n\nexercise\nNone\nExercise label.\n\n\nhint\nfalse\nCreate exercise hint block.\n\n\nsetup\nfalse\nCreate exercise setup block.\n\n\nsolution\nfalse\nCreate exercise solution block."
   },
   {
     "objectID": "getting_started/test.html",
@@ -1753,6 +1729,28 @@
     "crumbs": [
       "Introduction to Statistics in R",
       "Session 8: One-way ANOVA"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "intro",
+    "section": "",
+    "text": "These trainings aim to equip you with the tools you need to feel confident in performing your own data analayses using R. Why R and not, say, Excel or SPSS? While such software are intuitive to use, they offer less flexibility than the typical suite of scientific programming languages. R’s well organised and documented syntax, abundance of libraries for analysis and vizualisation and established community of contributors make it a powerful ally when mastered.\nNo matter your prior familiarity with R or data science techniques more broadly, we hope you’ll gain something from these sessions. The course will be organised as follows:\n\nWeekly virtual classes on Wednesday at 9am\nOne-on-one meetings with Hasse to discuss any challenges encountered in the exercises and track personal growth in techniques\nWeekly readings and exercises from the 2nd Edition of R for Data Science by Hadley Wickham, Mine Cetinkaya-Rundel and Garrett Grolemund\n\n\n\nIf you haven’t already, please visit Posit for instructions on downloading and installing R and RStudio. The order is important: please begin by installing R and then proceed to the RStudio installation. Ensure that you choose the correct operating system.\n\nIf you are using Windows, click the “Install R for Windows” option and then choose the base installation. For Mac, you will likely be using an Apple Silicon edition, in which case, please select the following:\n\nOnce both R and RStudio have finished installing, execute RStudio and type R.version into the console in the lower left panel. If R has installed correctly, you should see details on your version print into the console. Mine looks like:\n\nIf this is working, congratulations!",
+    "crumbs": [
+      "R for Data Science 2025",
+      "intro"
+    ]
+  },
+  {
+    "objectID": "intro.html#welcome-to-r-for-data-science-and-statistics-2025-r4dss",
+    "href": "intro.html#welcome-to-r-for-data-science-and-statistics-2025-r4dss",
+    "title": "intro",
+    "section": "",
+    "text": "These trainings aim to equip you with the tools you need to feel confident in performing your own data analayses using R. Why R and not, say, Excel or SPSS? While such software are intuitive to use, they offer less flexibility than the typical suite of scientific programming languages. R’s well organised and documented syntax, abundance of libraries for analysis and vizualisation and established community of contributors make it a powerful ally when mastered.\nNo matter your prior familiarity with R or data science techniques more broadly, we hope you’ll gain something from these sessions. The course will be organised as follows:\n\nWeekly virtual classes on Wednesday at 9am\nOne-on-one meetings with Hasse to discuss any challenges encountered in the exercises and track personal growth in techniques\nWeekly readings and exercises from the 2nd Edition of R for Data Science by Hadley Wickham, Mine Cetinkaya-Rundel and Garrett Grolemund\n\n\n\nIf you haven’t already, please visit Posit for instructions on downloading and installing R and RStudio. The order is important: please begin by installing R and then proceed to the RStudio installation. Ensure that you choose the correct operating system.\n\nIf you are using Windows, click the “Install R for Windows” option and then choose the base installation. For Mac, you will likely be using an Apple Silicon edition, in which case, please select the following:\n\nOnce both R and RStudio have finished installing, execute RStudio and type R.version into the console in the lower left panel. If R has installed correctly, you should see details on your version print into the console. Mine looks like:\n\nIf this is working, congratulations!",
+    "crumbs": [
+      "R for Data Science 2025",
+      "intro"
     ]
   }
 ]
