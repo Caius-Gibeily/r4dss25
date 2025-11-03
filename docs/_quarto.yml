@@ -9,8 +9,6 @@ website:
   page-navigation: true
   sidebar:
     contents:
-
-      - href: index.qmd
       - section: R for Data Science 2025
         contents:
           - intro.qmd

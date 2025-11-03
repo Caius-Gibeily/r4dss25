@@ -1,10 +1,9 @@
 ---
-title: "intro"
+title: "Welcome to R4DSS25"
 format: html
-editor: visual
 ---
 
-## Welcome to R for Data Science and Statistics 2025 (R4DSS)!
+### Welcome to R for Data Science and Statistics 2025 (R4DSS)!
 
 These trainings aim to equip you with the tools you need to feel confident in performing your own data analayses using R. Why R and not, say, Excel or SPSS? While such software are intuitive to use, they offer less flexibility than the typical suite of scientific programming languages. R's well organised and documented syntax, abundance of libraries for analysis and visualization and established community of contributors make it a powerful ally when mastered.
 
@@ -12,10 +11,9 @@ No matter your prior familiarity with R or data science techniques more broadly,
 
 -   Weekly virtual classes on Wednesday at 9am
 
--   One-on-one meetings with Hasse to discuss any challenges encountered in the exercises and track personal growth 
+-   One-on-one meetings with Hasse to discuss any challenges encountered in the exercises and track personal growth
 
--   Weekly readings and exercises from the 2nd Edition of [R for Data Science](https://r4ds.hadley.nz/) by Hadley Wickham, Mine Cetinkaya-Rundel and Garrett Grolemund and the corresponding `r4ds.tutorials` package 
-
+-   Weekly readings and exercises from the 2nd Edition of [R for Data Science](https://r4ds.hadley.nz/) by Hadley Wickham, Mine Cetinkaya-Rundel and Garrett Grolemund and the corresponding `r4ds.tutorials` package
 
 ### Getting started: installing R and RStudio (skip if they are already installed)
 
@@ -35,7 +33,7 @@ If this is working, congratulations!
 
 ### Cheatsheets and other helpful resources
 
-# Here are some useful cheatsheets and resources to have handy as you continue your R journey! 
+# Here are some useful cheatsheets and resources to have handy as you continue your R journey!
 
 #### Cheatsheets
 
@@ -47,14 +45,10 @@ If this is working, congratulations!
 
 -   [A compiled list of reference cheatsheets](https://artsci.usu.edu/math-stats/amlc/files/r-studio-reference-sheets-compilation.pdf){target="_blank"}
 
-
 #### Supplementary books
 
--   [Hands-on Programming with R](https://rstudio-education.github.io/hopr/){target"_blank"}
+-   [Hands-on Programming with R](https://rstudio-education.github.io/hopr/){target="_blank"}
 
 -   [Advanced R](https://adv-r.hadley.nz/index.html){target="_blank"}
 
 -   [Tidyverse Style Guide](https://style.tidyverse.org/){target="_blank"}
-
-
-
