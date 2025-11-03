@@ -33,7 +33,7 @@ If this is working, congratulations!
 
 ### Cheatsheets and other helpful resources
 
-# Here are some useful cheatsheets and resources to have handy as you continue your R journey!
+Here are some useful cheatsheets and resources to have handy as you continue your R journey!
 
 #### Cheatsheets
 
