@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Welcome to R4DSS25 – Data Science and Statistics in R for Fellowship</title>
+<title>Session 1: Data visualization – Data Science and Statistics in R for Fellowship</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Session_1.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -247,7 +246,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">R for Data Science 2025</a></li><li class="breadcrumb-item"><a href="./intro.html">Welcome to R4DSS25</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Data Science and Statistics in R for Fellowship
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -286,14 +287,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome to R4DSS25</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Session_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Session 1: Data visualization</span></a>
   </div>
 </li>
       </ul>
@@ -308,9 +303,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">R for Data Science 2025</a></li><li class="breadcrumb-item"><a href="./intro.html">Welcome to R4DSS25</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Welcome to R4DSS25</h1>
+<h1 class="title">Session 1: Data visualization</h1>
 </div>
 
 
@@ -327,83 +322,31 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="welcome-to-r-for-data-science-and-statistics-2025-r4dss" class="level3">
-<h3 class="anchored" data-anchor-id="welcome-to-r-for-data-science-and-statistics-2025-r4dss">Welcome to R for Data Science and Statistics 2025 (R4DSS)!</h3>
-<p>These trainings aim to equip you with the tools you need to feel confident in performing your own data analayses using R. Why R and not, say, Excel or SPSS? While such software are intuitive to use, they offer less flexibility than the typical suite of scientific programming languages. R’s well organised and documented syntax, abundance of libraries for analysis and visualization and established community of contributors make it a powerful ally when mastered.</p>
-<p>No matter your prior familiarity with R or data science techniques more broadly, we hope you’ll gain something from these sessions. The course will be organised as follows:</p>
+<p>This week, we will explore how to turn data into clear, compelling visuals using ggplot2 in R (part of the tidyverse). You will learn the core ideas behind the grammar of graphics, how to build plots step by step, and how to customize them to tell better data stories.</p>
+<p>We will dive into R training by reading the first section of <em>R for Data Science</em> (Second Edition), exploring interactive tutorials that follow along with the readings, and completing the exercises from the chapter.</p>
+<p>The following order of activities is recommended:</p>
+<p><strong>Step 1: Book chapter reading.</strong> Read <a href="https://r4ds.hadley.nz/data-visualize.html" target="_blank">chapter 1</a> in the R for Data Science book. At this stage, you do not need to complete any of the exercises in the book — simply skip them for now and continue reading to the end of the chapter. We will return to the book exercises a bit later (see below).</p>
+<p><strong>Step 2: Interactive tutorial.</strong> Go through the <em>r4ds.tutorials: 01-data-visualization</em> interactive tutorial. You can find more information about the tutorials and how to install the package (if you haven’t already) <a href="https://ppbds.github.io/r4ds.tutorials/" target="_blank">here</a>. In the upper-left pane of the RStudio IDE, you will find a tab named <em>Tutorials</em>. Click this tab and scroll down until you locate the correct tutorial, then click <em>Start Tutorial</em>. RStudio will load for a moment and then replace the list of tutorials with the actual tutorial. You should see a window with the text <em>Data Visualization</em> at the top.</p>
+<p>The tutorials are designed to give you hands-on experience working with R code. Most of them follow the corresponding chapters from the R for Data Science book, and the majority of exercises are interactive versions of code examples from the text. Some of the key explanatory passages from the chapters are also included.</p>
+<p>Below are some useful pieces of information to help you navigate the tutorials.</p>
 <ul>
-<li><p>Weekly virtual classes on Wednesday at 9am</p></li>
-<li><p>One-on-one meetings with Hasse to discuss any challenges encountered in the exercises and track personal growth</p></li>
-<li><p>Weekly readings and exercises from the 2nd Edition of <a href="https://r4ds.hadley.nz/">R for Data Science</a> by Hadley Wickham, Mine Cetinkaya-Rundel and Garrett Grolemund and the corresponding <code>r4ds.tutorials</code> package</p></li>
+<li><p>Above the tutorial window to the left, you will see three icons; a house a window and arrow and a stop sign. Clicking the house icon will take you back to the list of tutorials without quitting the one you are currently viewing. The window-and-arrow icon opens the tutorial in a new window. We strongly recommend doing this and making the window wide enough to display the table of contents on the left. This will make navigating the tutorial easier, and some of the output will also display better when you have more screen space. The stop sign icon quits the tutorial. One useful thing to know is that whenever you quit a tutorial and open it again, it will return you to where you left off, and your previous work will be saved.</p></li>
+<li><p>The first thing the tutorial will ask you to do is fill out some information. Please provide your name and email (you can ignore the ID request). Note that there is a small bug in the tutorial: after you enter your name and email and click <em>Submit Answer</em>, the button will change color and display <em>Try Again</em>. This is fine — your answer has been submitted successfully, and you can safely disregard this message.</p></li>
+<li><p>Each exercise asks you to enter some code into an interactive code window. These windows function like mini R apps that run the code you enter and display any resulting output. Once you’ve finished writing your code, click the <em>Run Code</em> button to execute it. When you do this, a check mark will appear next to the exercise number. Note that this check mark does not indicate a correct answer — only that an answer has been submitted. You can change your response as many times as you like; only the most recent version (after clicking <em>Run Code</em>) will be saved.</p></li>
+<li><p>At the top of each code window, you will find a <em>Start Over</em> button and a <em>Hint</em> button. These buttons clear all code and display helpful hints, respectively.</p></li>
+<li><p>Sometimes the tutorial exercises will ask you to do something outside of the tutorial window. Exercise 3 this week is an example of this. In this case, you will be asked to run some code in the <em>Console</em> (in the lower left part of the RStudio IDE), copy text from the <em>Help</em> tab (lower right part of the IDE) and paste it into a dedicated text box in the tutorial window.</p></li>
+<li><p>The tutorials occasionally diverge from the corresponding book chapters. For instance, Exercise 8 introduces the pipe (<code>|&gt;</code>) operator, which does not appear in the book until Chapter 3.</p></li>
+<li><p>At the end of the tutorial, once you have completed all the exercises, you will be asked to indicate how long it took you to complete the tutorial. The same “Try Again” bug mentioned earlier occurs here again and can be disregarded.</p></li>
+<li><p>The last thing you need to do before exiting the tutorial is download an HTML file containing your answers.</p></li>
 </ul>
-</section>
-<section id="getting-started-installing-r-and-rstudio-skip-if-they-are-already-installed" class="level3">
-<h3 class="anchored" data-anchor-id="getting-started-installing-r-and-rstudio-skip-if-they-are-already-installed">Getting started: installing R and RStudio (skip if they are already installed)</h3>
-<p>If you haven’t already, please visit <a href="https://posit.co/download/rstudio-desktop/">Posit</a> for instructions on downloading and installing R and RStudio. The order is important: please begin by installing R and then proceed to the RStudio installation. Ensure that you choose the correct operating system.</p>
-<p><img src="images/clipboard-1657930642.png" class="img-fluid"></p>
-<p>If you are using Windows, click the “Install R for Windows” option and then choose the <code>base</code> installation. For Mac, you will likely be using an Apple Silicon edition, in which case, please select the following:</p>
-<p><img src="images/clipboard-1856791698.png" class="img-fluid"></p>
-<p>Once R and then RStudio have finished installing, execute RStudio and type <code>R.version</code> into the console in the lower left panel. If R has installed correctly, you should see details on your version print into the console. Mine looks like:</p>
-<p><img src="images/clipboard-3704723856.png" class="img-fluid" width="434"></p>
-<p>If this is working, congratulations!</p>
-</section>
-<section id="creating-a-new-project-in-rstudio" class="level3">
-<h3 class="anchored" data-anchor-id="creating-a-new-project-in-rstudio">Creating a new project in RStudio</h3>
-<section id="option-1-create-a-new-project-from-scratch" class="level4">
-<h4 class="anchored" data-anchor-id="option-1-create-a-new-project-from-scratch">1. Option 1: Create a New Project from Scratch</h4>
-<ul>
-<li>Open RStudio</li>
-<li>Go to the top menu → File ▸ New Project… You’ll see three main options:
-<ol type="a">
-<li>New Directory → to start a fresh project</li>
-</ol>
-<ul>
-<li>Choose New Directory (for a fresh start).</li>
-<li>Pick a project type. Most often, you’ll choose <code>New Project</code> (plain R project)</li>
-<li>Give it a name, like <code>r4dss_project</code></li>
-<li>Click <code>Create Project</code> RStudio will then create a new folder for the project and set it as your working directory. It will also add a new file ending in <code>.rproj</code> in the working directory of the project</li>
-</ul>
-<ol start="2" type="a">
-<li>Existing Directory → if you already have a folder with files</li>
-<li>Version Control → to clone a GitHub or Git repo</li>
-</ol></li>
-</ul>
-</section>
-<section id="option-2-make-an-existing-folder-into-a-project" class="level4">
-<h4 class="anchored" data-anchor-id="option-2-make-an-existing-folder-into-a-project">2. Option 2: Make an Existing Folder into a Project</h4>
-<ul>
-<li>If you already have R scripts and data in a folder:</li>
-<li>Go to File ▸ New Project…</li>
-<li>Select Existing Directory</li>
-<li>Browse to your folder</li>
-<li>Click Create Project</li>
-<li>RStudio adds the .Rproj file there — you can now open it anytime to jump right back into that project setup.</li>
-</ul>
-</section>
-</section>
-<section id="cheatsheets-and-other-helpful-resources" class="level3">
-<h3 class="anchored" data-anchor-id="cheatsheets-and-other-helpful-resources">Cheatsheets and other helpful resources</h3>
-<p>Here are some useful cheatsheets and resources to have handy as you continue your R journey!</p>
-<section id="cheatsheets" class="level4">
-<h4 class="anchored" data-anchor-id="cheatsheets">Cheatsheets</h4>
-<ul>
-<li><p><a href="https://rstudio.github.io/cheatsheets/html/rstudio-ide.html" target="_blank">RStudio IDE cheatsheet</a></p></li>
-<li><p><a href="https://rstudio.github.io/cheatsheets/html/tidyr.html" target="_blank">Data tidying with <code>tidyr</code></a></p></li>
-<li><p><a href="https://rstudio.github.io/cheatsheets/html/data-visualization.html" target="_blank">Data visualization with <code>ggplot2</code></a></p></li>
-<li><p><a href="https://artsci.usu.edu/math-stats/amlc/files/r-studio-reference-sheets-compilation.pdf" target="_blank">A compiled list of reference cheatsheets</a></p></li>
-</ul>
-</section>
-<section id="supplementary-books" class="level4">
-<h4 class="anchored" data-anchor-id="supplementary-books">Supplementary books</h4>
-<ul>
-<li><p><a href="https://rstudio-education.github.io/hopr/" target="_blank">Hands-on Programming with R</a></p></li>
-<li><p><a href="https://adv-r.hadley.nz/index.html" target="_blank">Advanced R</a></p></li>
-<li><p><a href="https://style.tidyverse.org/" target="_blank">Tidyverse Style Guide</a></p></li>
-</ul>
+<p><strong>Step 3: Book chapter exercises.</strong> Now revisit the <a href="https://r4ds.hadley.nz/data-visualize.html" target="_blank">book chapter</a>. By this point, you should be quite familiar with this week’s R coding topics and well equipped to complete the book exercises. There are <code>10 + 4 + 7 + 2 = 23</code> exercises in total in chapter 1. Store you answers in an R script and call this file <em>Session_1.R</em>. In cases where an exercise asks you to provide an answer that is not code-based (for example, a question like “What does the <code>bins</code> argument in <code>geom_histogram()</code> do?”), you should still record your response directly in the script file. To do this, add your answer as a comment — that is, on a line beginning with <code>#</code>. This ensures that all your work, both code and written explanations, is saved in one place and easy to review later.</p>
+<p><strong>Step 3.5: One-on-one meetings.</strong> If what is described above makes it sound like you will be learning the material all on your own, don’t worry. You will have a one-on-one mentoring meeting with Hasse to go over your work when you have completed about the first half of the book chapter exercises. These meetings are mandatory for fellows but optional for graduate students.</p>
+<p>Meeting on Monday works best — it gives you some time to work on the exercises beforehand, and still finish the rest afterward, before we meet again as a group on Wednesday to continue discussing the materials. Try to schedule the meeting for Monday morning, since Hasse is based in Sweden and earlier times work best with the time difference. If Monday doesn’t work, Friday (the week before) or Tuesday are acceptable alternatives.</p>
+<p>To schedule your meeting, just send Hasse a message on Slack with some times when you are available. The meeting is a chance for you to get help with the exercises, ask questions, and a chance for you and Hasse to get to know each other better. We’ll aim for about 30 minutes, but if you need more help/time, you can request a longer meeting.</p>
+<p><strong>Step 4: Send Answers.</strong> Send Hasse both the HTML file containing the tutorial exercise answers and the R script file with the book chapter exercise answers via Slack no later than the end of the day on Tuesday.</p>
+<p><strong>Step 5: Wednesday group discussion.</strong> We’ll meet as a group every Wednesday to discuss what you’ve been learning and reflect on your progress.</p>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -818,18 +761,9 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./Session_1.html" class="pagination-link" aria-label="Session 1: Data visualization">
-        <span class="nav-page-text">Session 1: Data visualization</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://caius-gibeily.github.io/r4dss25/edit/main/docs/intro.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://caius-gibeily.github.io/r4dss25/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://caius-gibeily.github.io/r4dss25/edit/main/docs/Session 1.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://caius-gibeily.github.io/r4dss25/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
