@@ -32,7 +32,7 @@ Once R and then RStudio have finished installing, execute RStudio and type `R.ve
 If this is working, congratulations!
 
 ### Creating a new project in RStudio
-#### 1.  Option 1: Create a New Project from Scratch
+#### Option 1: Create a New Project from Scratch
   -   Open RStudio
   -   Go to the top menu → `File` → `New Project`...
       You’ll see three main options:
@@ -45,7 +45,7 @@ If this is working, congratulations!
       b.  Existing Directory → if you already have a folder with files
       c.  Version Control → to clone a GitHub or Git repo
 
-#### 2.  Option 2: Make an Existing Folder into a Project
+#### Option 2: Make an Existing Folder into a Project
   -   If you already have R scripts and data in a folder:
   -   Go to File ▸ New Project...
   -   Select Existing Directory
