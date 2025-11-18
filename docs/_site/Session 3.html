@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Welcome to R4DSS25 – Data Science and Statistics in R for Fellowship</title>
+<title>Session 3: Data tidying and import – Data Science and Statistics in R for Fellowship</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Session_1.html" rel="next">
+<link href="./Session 2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -247,7 +282,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">R for Data Science 2025</a></li><li class="breadcrumb-item"><a href="./intro.html">Welcome to R4DSS25</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">R for Data Science 2025</a></li><li class="breadcrumb-item"><a href="./Session 3.html">Session 3: Data tidying and import</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -286,7 +321,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome to R4DSS25</span></a>
   </div>
 </li>
@@ -304,7 +339,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Session 3.html" class="sidebar-item-text sidebar-link">
+  <a href="./Session 3.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Session 3: Data tidying and import</span></a>
   </div>
 </li>
@@ -320,9 +355,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">R for Data Science 2025</a></li><li class="breadcrumb-item"><a href="./intro.html">Welcome to R4DSS25</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">R for Data Science 2025</a></li><li class="breadcrumb-item"><a href="./Session 3.html">Session 3: Data tidying and import</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Welcome to R4DSS25</h1>
+<h1 class="title">Session 3: Data tidying and import</h1>
 </div>
 
 
@@ -339,83 +374,144 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="welcome-to-r-for-data-science-and-statistics-2025-r4dss" class="level3">
-<h3 class="anchored" data-anchor-id="welcome-to-r-for-data-science-and-statistics-2025-r4dss">Welcome to R for Data Science and Statistics 2025 (R4DSS)!</h3>
-<p>These trainings aim to equip you with the tools you need to feel confident in performing your own data analayses using R. Why R and not, say, Excel or SPSS? While such software are intuitive to use, they offer less flexibility than the typical suite of scientific programming languages. R’s well organised and documented syntax, abundance of libraries for analysis and visualization and established community of contributors make it a powerful ally when mastered.</p>
-<p>No matter your prior familiarity with R or data science techniques more broadly, we hope you’ll gain something from these sessions. The course will be organised as follows:</p>
-<ul>
-<li><p>Weekly virtual classes on Wednesday at 9am</p></li>
-<li><p>One-on-one meetings with Hasse to discuss any challenges encountered in the exercises and track personal growth</p></li>
-<li><p>Weekly readings and exercises from the 2nd Edition of <a href="https://r4ds.hadley.nz/">R for Data Science</a> by Hadley Wickham, Mine Cetinkaya-Rundel and Garrett Grolemund and the corresponding <code>r4ds.tutorials</code> package</p></li>
-</ul>
-</section>
-<section id="getting-started-installing-r-and-rstudio-skip-if-they-are-already-installed" class="level3">
-<h3 class="anchored" data-anchor-id="getting-started-installing-r-and-rstudio-skip-if-they-are-already-installed">Getting started: installing R and RStudio (skip if they are already installed)</h3>
-<p>If you haven’t already, please visit <a href="https://posit.co/download/rstudio-desktop/">Posit</a> for instructions on downloading and installing R and RStudio. The order is important: please begin by installing R and then proceed to the RStudio installation. Ensure that you choose the correct operating system.</p>
-<p><img src="images/clipboard-1657930642.png" class="img-fluid"></p>
-<p>If you are using Windows, click the “Install R for Windows” option and then choose the <code>base</code> installation. For Mac, you will likely be using an Apple Silicon edition, in which case, please select the following:</p>
-<p><img src="images/clipboard-1856791698.png" class="img-fluid"></p>
-<p>Once R and then RStudio have finished installing, execute RStudio and type <code>R.version</code> into the console in the lower left panel. If R has installed correctly, you should see details on your version print into the console. Mine looks like:</p>
-<p><img src="images/clipboard-3704723856.png" class="img-fluid" width="434"></p>
-<p>If this is working, congratulations!</p>
-</section>
-<section id="creating-a-new-project-in-rstudio" class="level3">
-<h3 class="anchored" data-anchor-id="creating-a-new-project-in-rstudio">Creating a new project in RStudio</h3>
-<section id="option-1-create-a-new-project-from-scratch" class="level4">
-<h4 class="anchored" data-anchor-id="option-1-create-a-new-project-from-scratch">Option 1: Create a New Project from Scratch</h4>
-<ul>
-<li>Open RStudio</li>
-<li>Go to the top menu → <code>File</code> → <code>New Project</code>… You’ll see three main options:
-<ol type="a">
-<li>New Directory → to start a fresh project</li>
+<p>The next two weeks (no meetings next week since it is Thanksgiving week), we will focus on two key foundations from <em>R for Data Science</em>: tidying data and importing it into R. We begin with data tidying from <strong>Chapter 5</strong>, where you will learn the principles of tidy data — each variable in its own column, each observation in its own row — and practice reshaping datasets using tools like <code>pivot_longer()</code> and <code>pivot_wider()</code>. We then move to data import from <strong>Chapter 7</strong>, exploring the readr package and its fast, predictable functions for reading common file formats, specifying column types, and handling irregularities in raw data. Together, these chapters build your ability to bring data into R and prepare it for effective analysis.</p>
+<p>One difference this time is that we will not go through the exercises in the book. The chapters we will read include few exercises, and it is important that you practice data tidying and data import in ways that reflect real-world situations you may encounter when working with data at Marcus and in other scenarios. Therefore, we have prepared custom exercises, which you will find at the bottom of this page.</p>
+<p>The following order of activities is recommended:</p>
+<p><strong>Step 1: Book chapter reading.</strong> Read both <a href="https://r4ds.hadley.nz/data-tidy.html" target="_blank">chapter 5</a> and <a href="https://r4ds.hadley.nz/data-import.html" target="_blank">chapter 7</a> in the R for Data Science book. Skip the exercises entirely.</p>
+<p><strong>Step 2: Interactive tutorials.</strong> Go through the <em>r4ds.tutorials: 05-data-tidying</em> and <em>r4ds.tutorials: 07-data-import</em> tutorials.</p>
+<p><strong>Step 3: Complete exercises.</strong> There are eight exercises further down on this webpage. Please complete these exercises <em>instead</em> of the ones in the book.</p>
+<p><strong>Step 3.5: One-on-one meetings.</strong> We will not meet during Thanksgiving week, but please schedule a meeting with Hasse for Monday, December 1. If there are things you would like to discuss before then, feel free to schedule a meeting at any time.</p>
+<p><strong>Step 4: Send Answers.</strong> Send Hasse both HTML files (2) containing the tutorial exercise answers, as well as the R script file with the website exercise answers, via Slack no later than the end of the day on Tuesday, December 2.</p>
+<p><strong>Step 5: Wednesday group discussion.</strong></p>
+<p><br>
+<br>
+</p>
+<p><strong>EXERCISES</strong></p>
+<ol type="1">
+<li>Copy the code in the code chunk below and fill in the blanks so that it generates the plot below this chunk. Explain why we need to use <code>pivot_longer()</code> in this case (Hint: think about how <code>facet_wrap()</code> works and <a href="https://haswal.github.io/pivot/" target="_blank">this visualization</a> might help you understand the mechanics of <code>pivot_longer()</code> better). What does the <code>scale</code> argument in <code>facet_wrap()</code> do? How can you use <code>labs()</code> to remove a specific label (x-axis for example)?</li>
 </ol>
-<ul>
-<li>Choose New Directory (for a fresh start).</li>
-<li>Pick a project type. Most often, you’ll choose <code>New Project</code> (plain R project)</li>
-<li>Give it a name, like <code>r4dss_project</code></li>
-<li>Click <code>Create Project</code> RStudio will then create a new folder for the project and set it as your working directory. It will also add a new file ending in <code>.Rproj</code> in the working directory of the project</li>
-</ul>
-<ol start="2" type="a">
-<li>Existing Directory → if you already have a folder with files</li>
-<li>Version Control → to clone a GitHub or Git repo</li>
-</ol></li>
-</ul>
-</section>
-<section id="option-2-make-an-existing-folder-into-a-project" class="level4">
-<h4 class="anchored" data-anchor-id="option-2-make-an-existing-folder-into-a-project">Option 2: Make an Existing Folder into a Project</h4>
-<ul>
-<li>If you already have R scripts and data in a folder:</li>
-<li>Go to File ▸ New Project…</li>
-<li>Select Existing Directory</li>
-<li>Browse to your folder</li>
-<li>Click Create Project</li>
-<li>RStudio adds the <code>.Rproj</code> file there — you can now open it anytime to jump right back into that project setup.</li>
-</ul>
-</section>
-</section>
-<section id="cheatsheets-and-other-helpful-resources" class="level3">
-<h3 class="anchored" data-anchor-id="cheatsheets-and-other-helpful-resources">Cheatsheets and other helpful resources</h3>
-<p>Here are some useful cheatsheets and resources to have handy as you continue your R journey!</p>
-<section id="cheatsheets" class="level4">
-<h4 class="anchored" data-anchor-id="cheatsheets">Cheatsheets</h4>
-<ul>
-<li><p><a href="https://rstudio.github.io/cheatsheets/html/rstudio-ide.html" target="_blank">RStudio IDE cheatsheet</a></p></li>
-<li><p><a href="https://rstudio.github.io/cheatsheets/html/tidyr.html" target="_blank">Data tidying with <code>tidyr</code></a></p></li>
-<li><p><a href="https://rstudio.github.io/cheatsheets/html/data-visualization.html" target="_blank">Data visualization with <code>ggplot2</code></a></p></li>
-<li><p><a href="https://artsci.usu.edu/math-stats/amlc/files/r-studio-reference-sheets-compilation.pdf" target="_blank">A compiled list of reference cheatsheets</a></p></li>
-</ul>
-</section>
-<section id="supplementary-books" class="level4">
-<h4 class="anchored" data-anchor-id="supplementary-books">Supplementary books</h4>
-<ul>
-<li><p><a href="https://rstudio-education.github.io/hopr/" target="_blank">Hands-on Programming with R</a></p></li>
-<li><p><a href="https://adv-r.hadley.nz/index.html" target="_blank">Advanced R</a></p></li>
-<li><p><a href="https://style.tidyverse.org/" target="_blank">Tidyverse Style Guide</a></p></li>
-</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(_____, _____, _____),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> _____,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> _____) <span class="sc">|&gt;</span> </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> _____,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">x =</span> _____, </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> _____)) <span class="sc">+</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>_____, <span class="at">scale =</span> _____) <span class="sc">+</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> _____)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Session-3_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="816"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Based on the same logic as in Exercise 1, recreate the code to generate the plot below (using the <code>flights</code> data from the <code>nycflights13</code> package). How can you tell <code>geom_boxplot()</code> to remove outliers? What conclusions can you draw from the plot?</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Session-3_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="816"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Copy the code in the chunk below and run it in RStudio to generate the <code>ex3</code> object. Then use <code>pivot_wider()</code> and <code>write_csv()</code> to write a file that looks like <code>output1.csv</code> (shared on Slack).</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ex3 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">column =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span>), <span class="at">each =</span> <span class="dv">10</span>), </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">values =</span> <span class="fu">c</span>(<span class="fl">4.2</span>, <span class="fl">5.1</span>, <span class="fl">7.1</span>, <span class="fl">2.1</span>, <span class="fl">7.2</span>, <span class="fl">8.1</span>, <span class="fl">2.2</span>, <span class="fl">8.2</span>, <span class="fl">9.1</span>, <span class="dv">10</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                         <span class="fl">7.3</span>, <span class="fl">7.4</span>, <span class="fl">8.3</span>, <span class="fl">9.2</span>, <span class="fl">2.3</span>, <span class="fl">1.2</span>, <span class="fl">8.5</span>, <span class="fl">9.4</span>, <span class="fl">12.4</span>, <span class="fl">1.5</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                         <span class="fl">8.9</span>, <span class="fl">2.7</span>, <span class="fl">1.4</span>, <span class="fl">7.7</span>, <span class="fl">3.4</span>, <span class="fl">8.7</span>, <span class="fl">9.5</span>, <span class="fl">0.8</span>, <span class="fl">2.9</span>, <span class="fl">9.9</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">ID =</span> <span class="fu">rep</span>(<span class="fu">paste0</span>(<span class="st">"ID_"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>), <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="1">
+<li>Next, we will practice importing some data. This exercise makes use of the <code>example1.csv</code> file sent to you on slack. It is recommended that you first take a look at the file (in the TextEdit app for example) before attempting to read it in, in order to identify things such as how columns are separated and how missing values are coded. Fill in the blanks in the code so that the output ends up looking identical to the tibble shown in next code chunk. Note that you may have to install the <code>janitor</code> package first. What does the <code>::</code> notation after <code>janitor</code> indicate?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>example_1 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(_____, <span class="at">skip =</span> __, <span class="at">na =</span> _____)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>example_1 <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span>_____ <span class="sc">|&gt;</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">measure_1 =</span> <span class="fu">parse_number</span>(_____), </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">age =</span> <span class="fu">parse_number</span>(<span class="fu">if_else</span>(age <span class="sc">==</span> _____, _____, _____)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 4
+   participant_id measure_1 measure_2   age
+   &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
+ 1 id1                    3         2     6
+ 2 id2                    3         4    17
+ 3 id3                    4         3    11
+ 4 id4                    4         2    24
+ 5 id5                   NA         5    18
+ 6 id6                    2         4     8
+ 7 id7                    2         2     9
+ 8 id8                    2         2    17
+ 9 id9                    2        NA    13
+10 id10                   3         5    15</code></pre>
+</div>
+</div>
+<ol start="5" type="1">
+<li>We will continue with <code>example2.csv</code>. Now it is your job to figure out how this file should be read and if any data transformation is necessary. Carefully study the file and look for ways to determine the correct <code>read_*()</code> function, meta-data lines, data entry inconsistencies and missing values. After reading in and transforming the data, make the plot below. The same color scale as in the very first example in <a href="https://r4ds.hadley.nz/data-visualize.html" target="_blank">chapter 1</a> of <em>R for Data Science</em> is used here. Read <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" target="_blank">this article</a> about how to change the <em>theme</em> (for example the default grey background). What should the <code>method</code> argument in <code>geom_smooth()</code> be set to for the curves to look like in the plot? Can you spot any issues with the way the curves fit the data, considering the y-axis represents the number of eggs?</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Session-3_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="624"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>For the next exercises, you will work with real data from Marcus (sent via Slack). These exercises use two datasets from clinical researchers studying the Autism Diagnostic Observation Scale (ADOS). Your task is to help these researchers tidy and manipulate their data so that visualizing it and creating summaries becomes a straightforward process.</p>
+<ol start="6" type="1">
+<li><p>First, we have the <code>ADOS1.xlsx</code> dataset. The researcher responsible for this data collection was interested in participants’ scores on the Social Affect subscale and how they vary over time. One new column was added for each participant assessed, reflecting all ages at which participants came to the clinic, inputting their Social Affect score on the row corresponding with their age at that clinic visit (we know, not a great way to input data!). As you will see, this dataset contains many missing values, as it would be quite unrealistic for all participants to visit at all ages.</p>
+<p>Note that the data is stored in an Excel file. To be able to import the file, first load the <code>readxl</code> package (already installed with the tidyverse collection of packages), then use the <code>read_xlsx()</code> function. Continue with one of the <code>pivot_*()</code> functions to properly format the ADOS1 dataset so you are able to calculate the <em>average number of visits across all participants</em>. To do this, we want you to use the <code>count()</code>, and <code>summarize()</code> functions. How many participants visited the clinic two or more times?</p></li>
+<li><p>Next, we have <code>ADOS2.xlsx</code>, created by a researcher who only recorded data from a single visit for each participant. This single visit, however, is reflected across two different rows, as a new row was created when scoring each subscale.</p>
+<p>Import the data correctly (how are NAs coded for example?) and use one of the <code>pivot_*()</code> functions to properly format the ADOS2 dataset so you are able to recreate the plot below. Take a look at the x- and y-axis labels for a hint as to the variables you may need to create. Read about how to jitter points <a href="https://www.statology.org/ggplot-jitter/" target="_blank">here</a>.</p></li>
+</ol>
+<center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Session-3_files/ados2.png" class="img-fluid figure-img"></p>
+<figcaption>ADOS2 dataset</figcaption>
+</figure>
+</div>
+</center>
+<ol start="8" type="1">
+<li>Here you will get to practice creating a summary table from a dataset that closely mimics real world <em>First Focus</em> data, stored in the <code>advanced_pivot.csv</code> file. The data entry process produced a dataset where each row represents a participant (identified in the <code>PID</code> column), and each subsequent column contains assessments of communication (Com), gross motor (GM), and fine motor (FM) skills at 6, 12, and 18 months. As you will see, the assessment type and age are both stored in the column names, making this a pivot problem very similar to example 5.3.4 in <em>R for Data science</em>. First read in the data, then use a combination of <code>pivot_longer()</code>, <code>pivot_longer()</code> (yes, you will need to pivot twice), <code>group_by()</code> and <code>summarize()</code> (and perhaps another function or two to get everything just right) to generate this output:</li>
+</ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 3
+    age measure mean_values
+  &lt;int&gt; &lt;chr&gt;         &lt;dbl&gt;
+1     6 Com            37.2
+2     6 FM             19.3
+3     6 GM             33.3
+4    12 Com            44.8
+5    12 FM             32.0
+6    12 GM             41.6
+7    18 Com            41.2
+8    18 FM             28.5
+9    18 GM             44.8</code></pre>
+</div>
+</div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -832,11 +928,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./Session 2.html" class="pagination-link" aria-label="Session 2: Data transformation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Session 2: Data transformation</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Session_1.html" class="pagination-link" aria-label="Session 1: Data visualization">
-        <span class="nav-page-text">Session 1: Data visualization</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -844,4 +940,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://caius-gibeily.github.io/r4dss25/edit/main/docs/intro.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://caius-gibeily.github.io/r4dss25/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://caius-gibeily.github.io/r4dss25/edit/main/docs/Session 3.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://caius-gibeily.github.io/r4dss25/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
