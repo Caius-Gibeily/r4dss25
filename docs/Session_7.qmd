@@ -14,7 +14,9 @@ This session will build on last week’s methods for writing efficient code and 
 
 **Exercises.** 
 1.    As we will be especially drawing on `map()` iteration during the statistics training, let's focus on writing them. 
+
   -   Take the simple `vec` object below and try writing a `map()` function to return the square of each element. Use `list_c()` instead of `list_rbind()`. Of course, using a map iteration here is rather inefficient since many of R's base functions are already 'vectorized', allowing them to perform multi-element operations without an explicit iteration. How should you square each element without using iteration? Knowing when to avoid explicit iteration will also improve the efficiency of your code.
+
   -   Within the `map()`, now save the output of vec when squared, cubed, and raised to the power of 4 in a tibble and collapse the output into a single tibble object.
 
 ```{r}
@@ -37,5 +39,4 @@ dat <- tibble(
 
 3.    Finally, come up with two of your own exercises, one involving modifying columns of a tibble (i.e. using `across()`, `if_any()` or `if_all()`) and the other, involving a map function. If you're feeling adventurous, you could also try experimenting with `map2()` or integrating your exercises into functions. Like last week, please try embedding them into a Quarto document, using code folding to hide the solutions. Your exercise could also be based on the iterations example from your previous work. 
 
-**Send** this Quarto document with your custom exercises to Caius and Hasse by 3pm on Tuesday.
-Be prepared to briefly **present** your exercises during the group meeting next Wednesday (February 4). You do *not* need to send answers to the r4ds tutorials or book chapter exercises. 
+You do *not* need to send your answers ahead of time but please be prepared to briefly **present** your exercises during the group meeting next Wednesday (February 4). You do *not* need to send answers to the r4ds tutorials or book chapter exercises. 
