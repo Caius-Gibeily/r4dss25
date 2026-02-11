@@ -1,5 +1,5 @@
 ---
-title: "Variance & Standard Deviation"
+title: "Session 8: Variance & Standard Deviation"
 format: html
 ---
 
