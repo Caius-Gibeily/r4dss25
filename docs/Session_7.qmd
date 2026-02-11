@@ -12,13 +12,13 @@ This session will build on last week’s methods for writing efficient code and 
 
 **Tutorials.** Go through the *r4ds.tutorials: 26-iteration* tutorial. *Warning*: there is a bug in the tutorial in *Exercise 2, Save your work*. You will need to copy and paste the code block where you initialized `gapminder` in the previous exercise to get the code to run. Unfortunately, the tutorial does not maintain the object between tabs.
 
-**Exercises.** 
+**Exercises.**
 
-1. As we will be especially drawing on `map()` iteration during the statistics training, let's focus on writing them.
+1.  As we will be especially drawing on `map()` iteration during the statistics training, let's focus on writing them.
 
-  -   Take the simple `vec` object below and try writing a `map()` function to return the square of each element. Use `list_c()` instead of `list_rbind()`. Of course, using a map iteration here is rather inefficient since many of R's base functions are already 'vectorized', allowing them to perform multi-element operations without an explicit iteration. How should you square each element without using iteration? Knowing when to avoid explicit iteration will also improve the efficiency of your code.
+-   Take the simple `vec` object below and try writing a `map()` function to return the square of each element. Use `list_c()` instead of `list_rbind()`. Of course, using a map iteration here is rather inefficient since many of R's base functions are already 'vectorized', allowing them to perform multi-element operations without an explicit iteration. How should you square each element without using iteration? Knowing when to avoid explicit iteration will also improve the efficiency of your code.
 
-  -   Within the `map()`, now save the output of vec when squared, cubed, and raised to the power of 4 in a tibble and collapse the output into a single tibble object.
+-   Within the `map()`, now save the output of vec when squared, cubed, and raised to the power of 4 in a tibble and collapse the output into a single tibble object.
 
 ```{r}
 #| eval: false 
@@ -27,8 +27,8 @@ vec <- 1:10
 
 2.  Let's now consider a basic tibble, `dat` with three normally distributed random variables, `x1`, `x2` and `x3`.
 
-  -   Use a map to return the mean and standard deviation for each variable. Compare the output with the use of `across()` instead.
-  -   How could you transform the output using `across()` into the same structure as the first, with separate columns for the mean and standard deviation?
+-   Use a map to return the mean and standard deviation for each variable. Compare the output with the use of `across()` instead.
+-   How could you transform the output using `across()` into the same structure as the first, with separate columns for the mean and standard deviation?
 
 ```{r}
 #| eval: false 
