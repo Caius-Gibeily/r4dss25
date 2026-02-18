@@ -1,5 +1,5 @@
 ---
-title: "Session 4: Covariance & Correlation"
+title: "Session 9: Covariance & Correlation"
 format: live-html
 engine: knitr
 webr:
