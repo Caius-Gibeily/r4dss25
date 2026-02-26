@@ -87,15 +87,15 @@ Now watch [Video 2](https://youtu.be/Xz0x-8-cgaQ?si=xFJeubpWZXvJsNvD){target="_b
 ```{r}
 #| eval: false
 boot <- function(data){
-  data %>% 
+  data |>
     slice_sample(prop = 1, replace = _____)
 }
 
-Adelie_no_missing <- penguins %>% 
+Adelie_no_missing <- penguins |>
   filter(species == _____, 
          !is.na(_____)) 
 
-Adelie_boot <- map(1:10000, \(i) boot(_____)) %>% 
+Adelie_boot <- map(1:10000, \(i) boot(_____)) |>
   list_rbind(names_to = "iteration")
 ```
 
