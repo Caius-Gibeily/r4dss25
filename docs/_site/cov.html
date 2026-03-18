@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Session 7: Iteration – Data Science and Statistics in R for Fellowship</title>
+<title>Session 9: Covariance &amp; Correlation – Data Science and Statistics in R for Fellowship</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Variance_2025.html" rel="next">
-<link href="./Session_6.html" rel="prev">
+<link href="./Standard_error_2025.html" rel="next">
+<link href="./Variance_2025.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -113,6 +113,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -287,7 +316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">R for Data Science 2025-26</a></li><li class="breadcrumb-item"><a href="./Session_7.html">Session 7: Iteration</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Variance_2025.html">R for Statistics 2026</a></li><li class="breadcrumb-item"><a href="./cov.html">Session 9: Covariance &amp; Correlation</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -368,7 +397,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Session_7.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Session_7.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Session 7: Iteration</span></a>
   </div>
 </li>
@@ -391,7 +420,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cov.html" class="sidebar-item-text sidebar-link">
+  <a href="./cov.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Session 9: Covariance &amp; Correlation</span></a>
   </div>
 </li>
@@ -419,9 +448,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">R for Data Science 2025-26</a></li><li class="breadcrumb-item"><a href="./Session_7.html">Session 7: Iteration</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Variance_2025.html">R for Statistics 2026</a></li><li class="breadcrumb-item"><a href="./cov.html">Session 9: Covariance &amp; Correlation</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Session 7: Iteration</h1>
+<h1 class="title">Session 9: Covariance &amp; Correlation</h1>
 </div>
 
 
@@ -438,46 +467,162 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This session will build on last week’s methods for writing efficient code and reducing needless copy-and-paste through another pillar of programming: iteration. You are likely already familiar with using iteration, perhaps in the form of <code>for</code> or <code>while</code> loops in base R or another programming language. By building and then applying functions in Excel to multiple cells, you have also performed iteration. As with function writing, the goal is not to become fully proficient in the minutiae of iteration but rather to support thinking programmatically about writing efficient code. We will also be relying on iteration in the upcoming statistics sessions.</p>
-<p><strong>Extract examples from your previous work</strong> Before reading the book chapter, we’d like you to try recalling any examples of how you might have used iteration in your past work, whether in R, MATLAB, Excel or another language. What problem were you attempting to address and how did you use iteration to address it? Be prepared to share these examples in class.</p>
-<p><strong>Book chapter reading.</strong> Please read <a href="https://r4ds.hadley.nz/iteration.html" target="_blank">Chapter 26</a> in <em>R for Data Science</em> and then complete the exercises in the chapter.</p>
-<p><strong>Tutorials.</strong> Go through the <em>r4ds.tutorials: 26-iteration</em> tutorial. <em>Warning</em>: there is a bug in the tutorial in <em>Exercise 2, Save your work</em>. You will need to copy and paste the code block where you initialized <code>gapminder</code> in the previous exercise to get the code to run. Unfortunately, the tutorial does not maintain the object between tabs.</p>
-<p><strong>Exercises.</strong></p>
-<ol type="1">
-<li>As we will be especially drawing on <code>map()</code> iteration during the statistics training, let’s focus on writing them.</li>
-</ol>
+<p>This week we will continue our statistics adventure by learning about covariance (video 1) and Pearson’s correlation (video 2). These concepts build directly on variance and standard deviation, helping us quantify the relationship between two variables.</p>
+<p>As before, after watching the videos, we’ll cement the ideas through a set of exercises in R. We’ll use our Thursday group meeting to discuss results and interpretations.</p>
+<p>Let’s begin by watching <a href="https://www.youtube.com/watch?v=qtaqvPAeEJY" target="_blank">Video 1</a> (<em>Covariance, Clearly Explained!!!</em>)</p>
+<p>Up to this point, we have been considering population estimates from a single variable, e.g.&nbsp;the expression level of gene X mentioned in Josh’s video. Such estimates are helpful: by knowing how a particular variable is distributed, we can determine the probability of sampling particular values from the population. But we’re often interested in identifying the relationships between different variables: how does rate of plant growth vary with respect to watering frequency and volume? Covariance tells us the extent to which two variables align in how they vary around their respective means.</p>
+<p>1 Let’s explore this by first generating two random variables <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>, where each row in the dataset is an observation.</p>
 <ul>
-<li><p>Take the simple <code>vec</code> object below and try writing a <code>map()</code> function to return the square of each element. Use <code>list_c()</code> instead of <code>list_rbind()</code>. Of course, using a map iteration here is rather inefficient since many of R’s base functions are already ‘vectorized’, allowing them to perform multi-element operations without an explicit iteration. How should you square each element without using iteration? Knowing when to avoid explicit iteration will also improve the efficiency of your code.</p></li>
-<li><p>Within the <code>map()</code>, now save the output of vec when squared, cubed, and raised to the power of 4 in a tibble and collapse the output into a single tibble object.</p></li>
+<li>Use the function to create a dataset comprising 100 observations and two variables. The population variance of both should be 25 with a mean of 10 for the first and 20 for the second.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>generate_data <span class="ot">&lt;-</span> <span class="cf">function</span>(n1,mu1,sd1, n2,mu2,sd2) {</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> <span class="fu">rnorm</span>(n1,mu1,sd1),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x2 =</span> <span class="fu">rnorm</span>(n2,mu2,sd2)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<ul>
+<li><p>Use <code>summarize()</code> with <code>across()</code> to calculate the variances and means of each variable. What are the sample means and variances for each variable?</p></li>
+<li><p>Briliant. Now, use <code>ggplot()</code> to create a scatterplot of x1 against x2. Explain what you see in the plot.</p></li>
+<li><p>If the two variables have the same variance, does that tell you anything about the covariance of the two variables? What do you expect the covariance will be from just looking at the plot? Add <code>geom_smooth(method = "lm")</code>. What can you say about the relationship of the two variables?</p></li>
+</ul>
 <ol start="2" type="1">
-<li>Let’s now consider a basic tibble, <code>dat</code> with three normally distributed random variables, <code>x1</code>, <code>x2</code> and <code>x3</code>.</li>
+<li>Fill in this function to calculate the covariance between two variables. How does it differ from the calculation of variance? If you wanted to use this function to calculate the variance of, say <code>x1</code>, what might you input for the function’s <code>var1</code> and <code>var2</code> arguments?</li>
 </ol>
-<ul>
-<li>Use a map to return the mean and standard deviation for each variable. Compare the output with the use of <code>across()</code> instead.</li>
-<li>How could you transform the output using <code>across()</code> into the same structure as the first, with separate columns for the mean and standard deviation?</li>
-</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x1 =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="at">mean=</span> <span class="dv">4</span>, <span class="at">sd =</span> <span class="dv">1</span>),</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x2 =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">2</span>,<span class="at">sd =</span> <span class="dv">10</span>),</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x3 =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean=</span> <span class="dv">8</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>find_cov <span class="ot">&lt;-</span> <span class="cf">function</span>(var1,var2) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  diffs_var1 <span class="ot">&lt;-</span> __________</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  diffs_var2 <span class="ot">&lt;-</span> __________</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  cov_var1_2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(______ <span class="sc">*</span> ______) </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  cov_var1_2 <span class="sc">/</span> (_____ <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Let’s now plot a histogram for each variable. Map through <code>dat</code>, using <code>ggplot</code> to construct histogram objects. Since you’re creating a list of ggplot objects, <code>list_rbind()</code> won’t work here. Use <code>patchwork::wrap_plots</code> to show the plots side-by-side.</li>
+<li><p>Use the function to calculate the covariance of the sample. Try generating new data a few times and calculating the covariance for each. What do you notice about the sign (+/-) and magnitude of the covariance?</p></li>
+<li><p>Let’s now calculate the covariance again, but this time after sorting both variables in ascending order. You can <code>mutate</code> and create new variables, <code>x1sorted</code> and <code>x2sorted</code>, each using <code>sort</code>. Now <code>summarize</code> the covariance between the two sorted variables using the <code>find_cov</code>. Now sort the second in descending order by setting <code>sort(x2, decreasing = TRUE)</code>. Why does sorting the variables in this way influence the covariance?</p></li>
 </ul>
 <ol start="3" type="1">
-<li>Finally, come up with two of your own exercises, one involving modifying columns of a tibble (i.e.&nbsp;using <code>across()</code>, <code>if_any()</code> or <code>if_all()</code>) and the other, involving a map function. If you’re feeling adventurous, you could also try experimenting with <code>map2()</code> or integrating your exercises into functions. Like last week, please try embedding them into a Quarto document, using code folding to hide the solutions. Your exercise could also be based on the iterations example from your previous work.</li>
+<li>Let’s create a new tibble where the second variable is related to the first but with an added bit of noise. Modify <code>generate_data()</code> such that instead of drawing <code>x1</code> and <code>x2</code> from separate random samples, <code>x2</code> should be created by mutating <code>x1</code> with a bit of added random noise: <code>x2 = x1 + rnorm(n = 100, mean = 0, sd = 1)</code></li>
 </ol>
-<p>You do <em>not</em> need to send your answers ahead of time but please be prepared to briefly <strong>present</strong> your exercises during the group meeting next Wednesday (February 4). You do <em>not</em> need to send answers to the r4ds tutorials or book chapter exercises.</p>
+<ul>
+<li>Josh showed how covariance changes as a result of the scale of the data. Calculate the covariance of your sample using <code>summarize</code> and your function, <code>find_cov</code>. Make a note of the covariance. Now, using your new data, let’s transform the second variable’s variance by simply multiplying it by a scalar and shifting the mean by some quantity using the function below.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cov_scale <span class="ot">&lt;-</span> <span class="cf">function</span>(dat,<span class="at">scale=</span><span class="dv">1</span>, <span class="at">mean_shift=</span><span class="dv">0</span>) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    dat <span class="sc">|&gt;</span> <span class="fu">summarize</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">scale =</span> scale,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_shift =</span> mean_shift,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cov_xy =</span> <span class="fu">find_cov</span>(dat[[<span class="dv">1</span>]],dat[[<span class="dv">2</span>]]<span class="sc">*</span>scale <span class="sc">+</span> mean_shift),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> <span class="fu">tibble</span>()</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Let’s run the following code to calculate the covariance of your data with different scalings.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cov_scaling <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">100</span>,<span class="dv">10</span>), </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>               \(x) <span class="fu">cov_scale</span>(df,<span class="at">scale=</span>x)) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list_rbind</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Plot the output of <code>cov_scaling</code>. What happens to covariance as the scaling increases? Does the relationship between the variables change?</p></li>
+<li><p>Instead of scaling the data, let’s now shift the mean of the data within the sequence <code>seq(1,100,10)</code>. Plot the relationship again. Why does scaling, but not mean shifting, affect the covariance?</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cov_meanshift <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">100</span>,<span class="dv">10</span>), </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>               \(x) <span class="fu">cov_scale</span>(df,<span class="at">mean_shift=</span>x)) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list_rbind</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Given the sensitivity of the covariance to the scale of the data data, reporting a single covariance value would be meaningless. Instead, we need a <em>standardized</em> value that is scale-invariant. Think about how you might devise an equation to standardize the covariance. Hint: try pre-standardizing the variables before calculating covariance.</p></li>
+<li><p>Modify the <code>find_cov</code> function to find the standardized covariance and then rerun the <code>cov_scaling</code> and <code>cov_meanshift</code> code blocks. Did your function behave as expected? What range of values do the covariances for your mean-shifted and rescaled variables take?</p></li>
+</ul>
+<section id="correlation" class="level2">
+<h2 class="anchored" data-anchor-id="correlation">Correlation</h2>
+<ol start="4" type="1">
+<li>Let’s continue the StatQuest by watching <a href="https://www.youtube.com/watch?v=xZ_z8KWkhXE" target="_blank">Video 2</a> (<em>Pearson’s Correlation, Clearly Explained!!!</em>).</li>
+</ol>
+<ul>
+<li>Josh explained how correlations offer a simple means of testing the linear relationship between two variables, falling between -1 and 1. To get an intuition for detecting linear correlation values in data, let’s start with a fun correlation guessing game. Run the following code block online and set <code>my_guess</code> to your estimate of the data’s correlation. Try re-running the code a few times until you feel confident estimating correlation.</li>
+</ul>
+<div class="cell">
+<div>
+<div id="webr-1" class="exercise-cell">
+
+</div>
+<script type="webr-1-contents">
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJjb3JyX3NhbXBsZXMgPC0gZnVuY3Rpb24obiA9IDEwMCl7XG4gIGNvcnIgPC0gc2FtcGxlKHNlcSgtMSwxLDAuMSksIDEpXG4gIG0gPC0gbXZybm9ybShuID0gbiwgXG4gICAgICAgICAgICAgICBtdSA9IGMoMCwwKSxcbiAgICAgICAgICAgICAgIFNpZ21hID0gbWF0cml4KGMoMSwgY29yciwgY29yciwgMSksIG5yb3cgPSAyKSlcbiAgZGYgPC0gdGliYmxlKHggPSBtWywxXSwgeSA9IG1bLDJdKVxuICBcbiAgcmV0dXJuKGxpc3QoY29yciwgZGYpKVxufVxuXG5jaGVja192YWx1ZSA8LSBmdW5jdGlvbihndWVzcywgY29ycikge1xuICBpZiAoIWlzLm5hKGd1ZXNzKSAmJiBhYnMoZ3Vlc3MgLSBjb3JyKSA8PSAwLjEpIHtcbiAgICBjYXQoXCJDb3JyZWN0ISBUaGUgdHJ1ZSBjb3JyZWxhdGlvbiBpc1wiLCBjb3JyKVxuICB9IGVsc2Uge1xuICAgIGNhdChcIk5pY2UgdHJ5LiBUaGUgdHJ1ZSBjb3JyZWxhdGlvbiBpc1wiLCBjb3JyKVxuICB9XG59In0=
+</script>
+</div>
+</div>
+<div class="cell">
+<div>
+<div id="webr-2" class="exercise-cell">
+
+</div>
+<script type="webr-2-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic2FtcGxlcyA8LSBjb3JyX3NhbXBsZXMobj0xMDApXG5nZ3Bsb3Qoc2FtcGxlc1tbMl1dLCBhZXMoeCA9IHgsIHkgPSB5KSkgK1xuICBnZW9tX3BvaW50KCkgK1xuICBnZW9tX3Ntb290aChtZXRob2Q9XCJsbVwiLCBzZSA9IEZBTFNFKSJ9
+</script>
+</div>
+</div>
+<div class="cell">
+<div>
+<div id="webr-3" class="exercise-cell">
+
+</div>
+<script type="webr-3-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBSZXBsYWNlIDAgd2l0aCB5b3VyIGd1ZXNzIGJldHdlZW4gLTEgYW5kIDFcbm15X2d1ZXNzIDwtIDBcbmNoZWNrX3ZhbHVlKG15X2d1ZXNzLHNhbXBsZXNbWzFdXSkifQ==
+</script>
+</div>
+</div>
+<ol start="5" type="1">
+<li>An important concept to parse out is the difference between covariance and correlation. We saw above how scaling the data influenced the covariance between two variables and how, by normalizing your variables, your covariance values always fell between -1 and 1. You have just calculated correlation! Pearson’s correlation is simply the normalized covariance or said another way, covariance between two z-scored variables.</li>
+</ol>
+<ul>
+<li>To belabor this point futher, take the function <code>cov_scale</code> and replace your normalized <code>find_cov()</code> function with <code>cor()</code>, R’s inbuilt correlation function. Compare the values with those you calculated using the standardized <code>find_cov</code>.</li>
+</ul>
+<ol start="6" type="1">
+<li>Finally, Josh highlighted the importance not just of correlation as an estimate of the relationship between two variables, but the degree of <em>confidence</em> we have in that relationship. He showed how, for any two points of data (where the standard deviation of both variables &gt; 0), that the correlation will always equal 1 or -1.</li>
+</ol>
+<ul>
+<li><p>Try this yourself: pass two vectors of length 2 into <code>cor</code>. For example, you might choose <code>c(1,2)</code> and <code>c(-5,20)</code>.</p></li>
+<li><p>As sample size increases, the confidence in the correlation, even if that correlation = 0, also increases. We will explore this idea of confidence now.</p></li>
+<li><p>Study the function below. Can you explain what each part of the function is doing? Copy the code into RStudio and set <code>n</code>, the number of observations, to 5 and run the code, saving the output to an object. You don’t have to specify <code>nruns</code>.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>generate_corr_hist <span class="ot">&lt;-</span> <span class="cf">function</span>(n, <span class="at">nruns =</span> <span class="dv">1000</span>) {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  chance_corrs <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span>nruns, \(i) {</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    df <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(<span class="at">n1 =</span> n, <span class="at">mu1 =</span> <span class="dv">0</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">sd1 =</span> <span class="dv">5</span>, </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">n2 =</span> n,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">mu2 =</span> <span class="dv">0</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">sd2 =</span> <span class="dv">5</span>) </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cor</span>(df[[<span class="dv">1</span>]], df[[<span class="dv">2</span>]])</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  }) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>()</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">corrs =</span> chance_corrs)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Use <code>ggplot</code> to draw a histogram of the values and a density plot with the <code>geom_density</code> argument. You can set <code>bw =</code> (smoothing bandwidth) to make the curve look smooth like you did last week.</li>
+<li>Now calculate the probability of finding a correlation value &gt;= 0.5 using methods similar to those you might have used last week. Now calculate the probability of finding a correlation more extreme than 0.5 or -0.5. Make a note of these probabilities</li>
+<li>Now set <code>n</code> to 30 and rerun this process. You may wish to create a function to calculate the probability.</li>
+<li>Set <code>n</code> to 100 and rerun it one final time. What do you notice about the shape of the histogram and density plots? How are the probability values changing and why is this occurring?</li>
+<li>As a bonus exercise, create a plot that overlays all of the density plots onto one graph.</li>
+</ul>
 
 
+<script type="webr-data">
+eyJvcHRpb25zIjp7ImJhc2VVcmwiOiJodHRwczovL3dlYnIuci13YXNtLm9yZy92MC41LjIvIn0sInBhY2thZ2VzIjp7InBrZ3MiOlsiZXZhbHVhdGUiLCJrbml0ciIsImh0bWx0b29scyIsImRwbHlyIiwiZ2dwbG90MiIsIk1BU1MiXSwicmVwb3MiOltdfSwicmVuZGVyX2RmIjoiZGVmYXVsdCJ9
+</script>
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W119
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0zIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8zO1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItMyIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzMgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8zID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8zLCB7fSk7XG4ifSx7ImNlbGxOYW1lIjoid2Vici13aWRnZXQtMiIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMjtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMi1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTItY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfMiA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMiwge30pO1xuIn0seyJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzE7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6Il93ZWJyX3ZhbHVlXzEgPSB7XG4gIGNvbnN0IHsgaGlnaGxpZ2h0UiwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIC8vIERlZmF1bHQgZXZhbHVhdGlvbiBjb25maWd1cmF0aW9uXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHtcbiAgICBpZDogXCJ3ZWJyLTEtY29udGVudHNcIixcbiAgICBlY2hvOiB0cnVlLFxuICAgIG91dHB1dDogdHJ1ZVxuICB9LCBibG9jay5hdHRyKTtcblxuICAvLyBFdmFsdWF0ZSB0aGUgcHJvdmlkZWQgUiBjb2RlXG4gIGNvbnN0IHJlc3VsdCA9IHdlYlJPanMucHJvY2Vzcyh7Y29kZTogYmxvY2suY29kZSwgb3B0aW9uc30sIHt9KTtcblxuICAvLyBFYXJseSB5aWVsZCB3aGlsZSB3ZSB3YWl0IGZvciB0aGUgZmlyc3QgZXZhbHVhdGlvbiBhbmQgcmVuZGVyXG4gIGlmIChvcHRpb25zLm91dHB1dCAmJiAhKFwiMVwiIGluIHdlYlJPanMucmVuZGVyZWRPanMpKSB7XG4gICAgY29uc3QgY29udGFpbmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcbiAgICBjb25zdCBzcGlubmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcblxuICAgIGlmIChvcHRpb25zLmVjaG8pIHtcbiAgICAgIC8vIFNob3cgb3V0cHV0IGFzIGhpZ2hsaWdodGVkIHNvdXJjZVxuICAgICAgY29uc3QgcHJlRWxlbSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJwcmVcIik7XG4gICAgICBjb250YWluZXIuY2xhc3NOYW1lID0gXCJzb3VyY2VDb2RlXCI7XG4gICAgICBwcmVFbGVtLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZSByXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFIoYmxvY2suY29kZSkpO1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItZ3JvdyBzcGlubmVyLWdyb3ctc20gbS0yIHBvc2l0aW9uLWFic29sdXRlIHRvcC0wIGVuZC0wXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHByZUVsZW0pO1xuICAgIH0gZWxzZSB7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ib3JkZXIgc3Bpbm5lci1ib3JkZXItc21cIjtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICB9XG5cbiAgICB5aWVsZCBjb250YWluZXI7XG4gIH1cblxuICB3ZWJST2pzLnJlbmRlcmVkT2pzW1wiMVwiXSA9IHRydWU7XG4gIHlpZWxkIGF3YWl0IHJlc3VsdDtcbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXByZWx1ZGUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ3ZWJST2pzID0ge1xuICBjb25zdCB7IFdlYlIsIENoYW5uZWxUeXBlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lLldlYlI7XG4gIGNvbnN0IHtcbiAgICBXZWJSRXZhbHVhdG9yLFxuICAgIFdlYlJFbnZpcm9ubWVudE1hbmFnZXIsXG4gICAgc2V0dXBSLFxuICAgIGI2NERlY29kZSxcbiAgICBjb2xsYXBzZVBhdGhcbiAgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc3RhdHVzQ29udGFpbmVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJleGVyY2lzZS1sb2FkaW5nLXN0YXR1c1wiKTtcbiAgY29uc3QgaW5kaWNhdG9yQ29udGFpbmVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJleGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaW5kaWNhdG9yQ29udGFpbmVyLmNsYXNzTGlzdC5yZW1vdmUoXCJkLW5vbmVcIik7XG5cbiAgbGV0IHN0YXR1c1RleHQgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpXG4gIHN0YXR1c1RleHQuY2xhc3NMaXN0ID0gXCJleGVyY2lzZS1sb2FkaW5nLWRldGFpbHNcIjtcbiAgc3RhdHVzVGV4dCA9IHN0YXR1c0NvbnRhaW5lci5hcHBlbmRDaGlsZChzdGF0dXNUZXh0KTtcbiAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBJbml0aWFsaXNlYDtcblxuICAvLyBIb2lzdCBpbmRpY2F0b3Igb3V0IGZyb20gZmluYWwgc2xpZGUgd2hlbiBydW5uaW5nIHVuZGVyIHJldmVhbFxuICBjb25zdCByZXZlYWxTdGF0dXMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCAuZXhlcmNpc2UtbG9hZGluZy1pbmRpY2F0b3JcIik7XG4gIGlmIChyZXZlYWxTdGF0dXMpIHtcbiAgICByZXZlYWxTdGF0dXMucmVtb3ZlKCk7XG4gICAgZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5yZXZlYWwgPiAuc2xpZGVzXCIpLmFwcGVuZENoaWxkKHJldmVhbFN0YXR1cyk7XG4gIH1cblxuICAvLyBNYWtlIGFueSByZXZlYWwgc2xpZGVzIHdpdGggbGl2ZSBjZWxscyBzY3JvbGxhYmxlXG4gIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoXCIucmV2ZWFsIC5leGVyY2lzZS1jZWxsXCIpLmZvckVhY2goKGVsKSA9PiB7XG4gICAgZWwuY2xvc2VzdCgnc2VjdGlvbi5zbGlkZScpLmNsYXNzTGlzdC5hZGQoXCJzY3JvbGxhYmxlXCIpO1xuICB9KVxuXG4gIC8vIHdlYlIgc3VwcGxlbWVudGFsIGRhdGEgYW5kIG9wdGlvbnNcbiAgY29uc3QgZGF0YUNvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici1kYXRhXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZGF0YSA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKGRhdGFDb250ZW50KSk7XG5cbiAgLy8gR3JhYiBsaXN0IG9mIHJlc291cmNlcyB0byBiZSBkb3dubG9hZGVkXG4gIGNvbnN0IGZpbGVzQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ2ZnMtZmlsZVxcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGZpbGVzID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZmlsZXNDb250ZW50KSk7XG5cbiAgLy8gVXNlIFBvc3RNZXNzYWdlIGNoYW5uZWwgZm9yIGFzeW5jIGNvbW11bmljYXRpb25cbiAgLy8gV2UgZG8gbm90IGV4cGVjdCB0byB0YWtlIG5lc3RlZCBwcm9tcHQgaW5wdXQgaW4gUXVhcnRvIExpdmUgY2VsbHNcbiAgZGF0YS5vcHRpb25zLmNoYW5uZWxUeXBlID0gQ2hhbm5lbFR5cGUuUG9zdE1lc3NhZ2U7XG5cbiAgLy8gSW5pdGlhbGlzZSB3ZWJSIGFuZCBzZXR1cCBmb3IgUiBjb2RlIGV2YWx1YXRpb25cbiAgbGV0IHdlYlJQcm9taXNlID0gKGFzeW5jICh3ZWJSKSA9PiB7XG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyB3ZWJSYDtcbiAgICBhd2FpdCB3ZWJSLmluaXQoKTtcblxuICAgIC8vIEluc3RhbGwgcHJvdmlkZWQgbGlzdCBvZiBwYWNrYWdlc1xuICAgIC8vIEVuc3VyZSB3ZWJSIGRlZmF1bHQgcmVwbyBpcyBpbmNsdWRlZFxuICAgIGRhdGEucGFja2FnZXMucmVwb3MucHVzaChcImh0dHBzOi8vcmVwby5yLXdhc20ub3JnXCIpXG4gICAgYXdhaXQgZGF0YS5wYWNrYWdlcy5wa2dzLm1hcCgocGtnKSA9PiAoKSA9PiB7XG4gICAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYERvd25sb2FkaW5nIHBhY2thZ2U6ICR7cGtnfWA7XG4gICAgICByZXR1cm4gd2ViUi5ldmFsUlZvaWQoYFxuICAgICAgICB3ZWJyOjppbnN0YWxsKHBrZywgcmVwb3MgPSByZXBvcylcbiAgICAgICAgbGlicmFyeShwa2csIGNoYXJhY3Rlci5vbmx5ID0gVFJVRSlcbiAgICAgIGAsIHsgZW52OiB7XG4gICAgICAgIHBrZzogcGtnLFxuICAgICAgICByZXBvczogZGF0YS5wYWNrYWdlcy5yZXBvcyxcbiAgICAgIH19KTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcblxuICAgIC8vIERvd25sb2FkIGFuZCBpbnN0YWxsIHJlc291cmNlc1xuICAgIGF3YWl0IGZpbGVzLm1hcCgoZmlsZSkgPT4gYXN5bmMgKCkgPT4ge1xuICAgICAgY29uc3QgbmFtZSA9IGZpbGUuc3Vic3RyaW5nKGZpbGUubGFzdEluZGV4T2YoJy8nKSArIDEpO1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyByZXNvdXJjZTogJHtuYW1lfWA7XG4gICAgICBjb25zdCByZXNwb25zZSA9IGF3YWl0IGZldGNoKGZpbGUpO1xuICAgICAgaWYgKCFyZXNwb25zZS5vaykge1xuICAgICAgICB0aHJvdyBuZXcgRXJyb3IoYENhbid0IGRvd25sb2FkIFxcYCR7ZmlsZX1cXGAuIEVycm9yICR7cmVzcG9uc2Uuc3RhdHVzfTogXCIke3Jlc3BvbnNlLnN0YXR1c1RleHR9XCIuYCk7XG4gICAgICB9XG4gICAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzcG9uc2UuYXJyYXlCdWZmZXIoKTtcblxuICAgICAgLy8gU3RvcmUgVVJMcyBpbiB0aGUgY3dkIHdpdGhvdXQgYW55IHN1YmRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGlmIChmaWxlLmluY2x1ZGVzKFwiOi8vXCIpKSB7XG4gICAgICAgIGZpbGUgPSBuYW1lO1xuICAgICAgfVxuXG4gICAgICAvLyBDb2xsYXBzZSBoaWdoZXIgZGlyZWN0b3J5IHN0cnVjdHVyZVxuICAgICAgZmlsZSA9IGNvbGxhcHNlUGF0aChmaWxlKTtcblxuICAgICAgLy8gQ3JlYXRlIGRpcmVjdG9yeSB0cmVlLCBpZ25vcmluZyBcImRpcmVjdG9yeSBleGlzdHNcIiBWRlMgZXJyb3JzXG4gICAgICBjb25zdCBwYXJ0cyA9IGZpbGUuc3BsaXQoJy8nKS5zbGljZSgwLCAtMSk7XG4gICAgICBsZXQgcGF0aCA9ICcnO1xuICAgICAgd2hpbGUgKHBhcnRzLmxlbmd0aCA+IDApIHtcbiAgICAgICAgcGF0aCArPSBwYXJ0cy5zaGlmdCgpICsgJy8nO1xuICAgICAgICB0cnkge1xuICAgICAgICAgIGF3YWl0IHdlYlIuRlMubWtkaXIocGF0aCk7XG4gICAgICAgIH0gY2F0Y2ggKGUpIHtcbiAgICAgICAgICBpZiAoIWUubWVzc2FnZS5pbmNsdWRlcyhcIkZTIGVycm9yXCIpKSB7XG4gICAgICAgICAgICB0aHJvdyBlO1xuICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgfVxuXG4gICAgICAvLyBXcml0ZSB0aGlzIGZpbGUgdG8gdGhlIFZGU1xuICAgICAgcmV0dXJuIGF3YWl0IHdlYlIuRlMud3JpdGVGaWxlKGZpbGUsIG5ldyBVaW50OEFycmF5KGRhdGEpKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcblxuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgSW5zdGFsbGluZyB3ZWJSIHNoaW1zYDtcbiAgICBhd2FpdCB3ZWJSLmV2YWxSVm9pZChgd2Vicjo6c2hpbV9pbnN0YWxsKClgKTtcblxuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgV2ViUiBlbnZpcm9ubWVudCBzZXR1cGA7XG4gICAgYXdhaXQgc2V0dXBSKHdlYlIsIGRhdGEpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHdlYlI7XG4gIH0pKG5ldyBXZWJSKGRhdGEub3B0aW9ucykpO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCB3ZWJSID0gYXdhaXQgd2ViUlByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFdlYlJFdmFsdWF0b3Iod2ViUiwgY29udGV4dClcbiAgICBhd2FpdCBldmFsdWF0b3IucHJvY2VzcyhpbnB1dHMpO1xuICAgIHJldHVybiBldmFsdWF0b3IuY29udGFpbmVyO1xuICB9XG5cbiAgcmV0dXJuIHtcbiAgICBwcm9jZXNzLFxuICAgIHdlYlJQcm9taXNlLFxuICAgIHJlbmRlcmVkT2pzLFxuICB9O1xufVxuIn1dfQ==
 </script>
 <div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
 <div id="exercise-loading-status" class="d-flex gap-2">
@@ -490,6 +635,7 @@ eyJjb250ZW50cyI6W119
 <script type="vfs-file">
 W10=
 </script>
+</section>
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
@@ -917,13 +1063,13 @@ window._ojs.runtime.interpretFromScriptTags();
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Session_6.html" class="pagination-link" aria-label="Session 6: Functions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Session 6: Functions</span>
+      <a href="./Variance_2025.html" class="pagination-link" aria-label="Session 8: Variance &amp; Standard Deviation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Session 8: Variance &amp; Standard Deviation</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Variance_2025.html" class="pagination-link" aria-label="Session 8: Variance &amp; Standard Deviation">
-        <span class="nav-page-text">Session 8: Variance &amp; Standard Deviation</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Standard_error_2025.html" class="pagination-link" aria-label="Session 10: Standard error, Bootstrapping and Confidence intervals">
+        <span class="nav-page-text">Session 10: Standard error, Bootstrapping and Confidence intervals</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -932,4 +1078,4 @@ window._ojs.runtime.interpretFromScriptTags();
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://caius-gibeily.github.io/r4dss25/edit/main/docs/Session_7.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://caius-gibeily.github.io/r4dss25/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://caius-gibeily.github.io/r4dss25/edit/main/docs/cov.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://caius-gibeily.github.io/r4dss25/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

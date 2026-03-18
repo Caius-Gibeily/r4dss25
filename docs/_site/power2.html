@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Session 7: Iteration – Data Science and Statistics in R for Fellowship</title>
+<title>Session 12: Cohen’s d, statistical power &amp; power analysis – Data Science and Statistics in R for Fellowship</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Variance_2025.html" rel="next">
-<link href="./Session_6.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -81,8 +79,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark-08799928d293638fe9563d5c5a2794e5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
-<link href="site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -110,9 +106,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
-<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -287,7 +310,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">R for Data Science 2025-26</a></li><li class="breadcrumb-item"><a href="./Session_7.html">Session 7: Iteration</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Data Science and Statistics in R for Fellowship
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -368,7 +393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Session_7.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Session_7.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Session 7: Iteration</span></a>
   </div>
 </li>
@@ -419,9 +444,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">R for Data Science 2025-26</a></li><li class="breadcrumb-item"><a href="./Session_7.html">Session 7: Iteration</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Session 7: Iteration</h1>
+<h1 class="title">Session 12: Cohen’s d, statistical power &amp; power analysis</h1>
 </div>
 
 
@@ -438,71 +463,168 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This session will build on last week’s methods for writing efficient code and reducing needless copy-and-paste through another pillar of programming: iteration. You are likely already familiar with using iteration, perhaps in the form of <code>for</code> or <code>while</code> loops in base R or another programming language. By building and then applying functions in Excel to multiple cells, you have also performed iteration. As with function writing, the goal is not to become fully proficient in the minutiae of iteration but rather to support thinking programmatically about writing efficient code. We will also be relying on iteration in the upcoming statistics sessions.</p>
-<p><strong>Extract examples from your previous work</strong> Before reading the book chapter, we’d like you to try recalling any examples of how you might have used iteration in your past work, whether in R, MATLAB, Excel or another language. What problem were you attempting to address and how did you use iteration to address it? Be prepared to share these examples in class.</p>
-<p><strong>Book chapter reading.</strong> Please read <a href="https://r4ds.hadley.nz/iteration.html" target="_blank">Chapter 26</a> in <em>R for Data Science</em> and then complete the exercises in the chapter.</p>
-<p><strong>Tutorials.</strong> Go through the <em>r4ds.tutorials: 26-iteration</em> tutorial. <em>Warning</em>: there is a bug in the tutorial in <em>Exercise 2, Save your work</em>. You will need to copy and paste the code block where you initialized <code>gapminder</code> in the previous exercise to get the code to run. Unfortunately, the tutorial does not maintain the object between tabs.</p>
-<p><strong>Exercises.</strong></p>
-<ol type="1">
-<li>As we will be especially drawing on <code>map()</code> iteration during the statistics training, let’s focus on writing them.</li>
-</ol>
+<section id="cohens-d" class="level2">
+<h2 class="anchored" data-anchor-id="cohens-d">Cohen’s d</h2>
+<p>If we were interested in determining whether two samples truly came from separate distributions, knowing only the difference in means wouldn’t be enough. Just as we grounded covariance into correlation by standardizing it against the scales of each variable’s variance, we need to do something similar to quantify the <em>effect size</em>. We achieve this feat using <code>Cohen's d</code>.</p>
+<p>1 - Watch Steven Bradburn’s video on calculating Cohen’s d <a href="https://www.youtube.com/watch?v=IetVSlrndpI" target="_blank">here</a> (<strong>What Is And How To Calculate Cohen’s d?</strong>) and take a look at <a href="https://rpsychologist.com/cohend/" target="_blank">this</a> illustration from RPsychologist.</p>
 <ul>
-<li><p>Take the simple <code>vec</code> object below and try writing a <code>map()</code> function to return the square of each element. Use <code>list_c()</code> instead of <code>list_rbind()</code>. Of course, using a map iteration here is rather inefficient since many of R’s base functions are already ‘vectorized’, allowing them to perform multi-element operations without an explicit iteration. How should you square each element without using iteration? Knowing when to avoid explicit iteration will also improve the efficiency of your code.</p></li>
-<li><p>Within the <code>map()</code>, now save the output of vec when squared, cubed, and raised to the power of 4 in a tibble and collapse the output into a single tibble object.</p></li>
+<li><p>Implement a function in R that takes as arguments the means, sample sizes and standard deviations of any two variables and calculates Cohen’s d.&nbsp;Your function may begin like <code>cohens_d &lt;- function(n1,n2,mu1,mu2,sd1,sd2) {...</code>.</p></li>
+<li><p>Let’s test the function on the dataset we’ve come to know and love: the palmerpenguins. Like you did last week, load in the penguins dataset, selecting any biological variable of interest. Filter for just two of the penguin species. Grouping by species, return the summary statistics for each species’ mean, sd and sample size. Input these values into your function! We’ll compare values in class.</p></li>
+<li><p>The effect size is adjusted according to the pooled standard deviation of the two variables. Study the following code then run it. Note: you will need an operational cohens_d function for this code to run. What do you notice about Cohen’s d as sd1 and sd2 change? What about when sd1 and sd2 both equal 1?</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mu1 <span class="ot">=</span> <span class="dv">8</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>mu2 <span class="ot">=</span> <span class="dv">5</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sd_range <span class="ot">=</span> <span class="fu">set_names</span>(<span class="fu">seq</span>(<span class="fl">0.5</span>,<span class="dv">3</span>,<span class="fl">0.5</span>))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>d_vals <span class="ot">&lt;-</span> <span class="fu">map</span>(sd_range, \(__) {</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            <span class="fu">map</span>(sd_range, \(__) {</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>              <span class="fu">tibble</span>(<span class="at">d =</span> <span class="fu">cohens_d</span>(<span class="dv">100</span>,<span class="dv">100</span>,___,___,___,___))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            }) <span class="sc">|&gt;</span> <span class="fu">list_rbind</span>(<span class="at">names_to=</span><span class="st">"sd2"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">|&gt;</span> <span class="fu">list_rbind</span>(<span class="at">names_to=</span><span class="st">"sd1"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>d_vals <span class="sc">|&gt;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___, <span class="at">fill =</span> ___)) <span class="sc">+</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(d, <span class="dv">2</span>)), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"sd1"</span>, <span class="at">y =</span> <span class="st">"sd2"</span>, <span class="at">fill =</span> <span class="st">"Cohen's d"</span>) <span class="sc">+</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="2" type="1">
-<li>Let’s now consider a basic tibble, <code>dat</code> with three normally distributed random variables, <code>x1</code>, <code>x2</code> and <code>x3</code>.</li>
-</ol>
 <ul>
-<li>Use a map to return the mean and standard deviation for each variable. Compare the output with the use of <code>across()</code> instead.</li>
-<li>How could you transform the output using <code>across()</code> into the same structure as the first, with separate columns for the mean and standard deviation?</li>
+<li>Given the formula you’ve implemented as a function, how would you work backwards to calculate the mean difference for a given Cohen’s d and pooled standard deviation? What mean difference would you expect for a Cohen’s d of 0.5 and pooled sd of 3?</li>
+</ul>
+</section>
+<section id="power-and-power-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="power-and-power-analysis">Power and power analysis</h2>
+<p>2 - Let’s now turn back to Josh and watch this <a href="https://www.youtube.com/watch?v=Rsc5znwR5FA" target="_blank">video</a> (<strong>Statistical Power, Clearly Explained!!!)</strong> and then this <a href="https://www.youtube.com/watch?v=VX_M3tIyiYk" target="_blank">video</a> (<strong>Power Analysis, Clearly Explained!!!</strong>). Check out this visualization too of <a href="https://rpsychologist.com/d3/nhst/" target="_blank">power analysis</a></p>
+<ul>
+<li><p>How would you explain statistical power to a fellow researcher? What do the different colored regions correspond to in the RPsychologist visualization?</p></li>
+<li><p>We’ll now try to empirically calculate the statistical power on simulated variables <code>x1</code> and <code>x2</code> with known population means and sds. Like before, we’ll run 10000 iterations. For each sample, we will run a t-test (if you’re thinking we could also use permutation between the two variables, you’re right! For computational speed, however, the t-test will be faster). While we used <code>t_test</code> from the infer package last week, it runs more slowly than the base R <code>t.test</code>. For single t-tests, this is fine but given the 10k simulations we’ll be running, <code>t.test</code> will come in handy. Study the following code, using <code>generate_data</code> from our covariance session:</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x1 =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="at">mean=</span> <span class="dv">4</span>, <span class="at">sd =</span> <span class="dv">1</span>),</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x2 =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">2</span>,<span class="at">sd =</span> <span class="dv">10</span>),</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x3 =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean=</span> <span class="dv">8</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>generate_data <span class="ot">&lt;-</span> <span class="cf">function</span>(n1,mu1,sd1, n2,mu2,sd2) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> <span class="fu">rnorm</span>(n1,mu1,sd1),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x2 =</span> <span class="fu">rnorm</span>(n2,mu2,sd2)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>pvals <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>, \(i) { </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(n,mu1,sd,n,mu2,sd) <span class="sc">|&gt;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarize</span>(<span class="at">pval =</span> <span class="fu">t.test</span>(x1,x2,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                              <span class="at">var.equal=</span><span class="cn">TRUE</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                              <span class="at">alpha=</span>alpha)<span class="sc">$</span>p.value)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    }) <span class="sc">|&gt;</span> <span class="fu">list_rbind</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Let’s now plot a histogram for each variable. Map through <code>dat</code>, using <code>ggplot</code> to construct histogram objects. Since you’re creating a list of ggplot objects, <code>list_rbind()</code> won’t work here. Use <code>patchwork::wrap_plots</code> to show the plots side-by-side.</li>
+<li><p>Let’s now use the code to calculate the power we have to detect whether there is a significant difference in the means between two normally distributed variables, <code>x1</code> and <code>x2</code>. Each sample will have <code>n=20</code> observations and we’ll set the <code>sd</code> for both variables at <code>4</code>. The true mean of <code>x</code> is 10. Using what you found above, find the mean of <code>y</code> if the true Cohen’s d between <code>x</code> and <code>y</code> is 0.3 (hint: calculate the mean difference first).</p></li>
+<li><p>Input the means, sds and n into the code block above and let it run! For the standard alpha = 0.05, what proportion of samples returned a significant value? Let’s just confirm, what have you just calculated? Make sure to keep a note of these proportions.</p></li>
+<li><p>Let’s try this again for a true Cohen’s d of 0.8. What do you get now?</p></li>
+<li><p>Finally, let’s try to find the smallest sample size you’d need to achieve a power of 0.5 (50%) for a Cohen’s d of 0.3 by running a quick simulation study. Hint: you could manually change values of n or try mapping through a range of n values. Reach out to us if you’re not sure how to do this.</p></li>
+<li><p>How many observations would you need for approximately 0.8 (80%) power?</p></li>
 </ul>
-<ol start="3" type="1">
-<li>Finally, come up with two of your own exercises, one involving modifying columns of a tibble (i.e.&nbsp;using <code>across()</code>, <code>if_any()</code> or <code>if_all()</code>) and the other, involving a map function. If you’re feeling adventurous, you could also try experimenting with <code>map2()</code> or integrating your exercises into functions. Like last week, please try embedding them into a Quarto document, using code folding to hide the solutions. Your exercise could also be based on the iterations example from your previous work.</li>
-</ol>
-<p>You do <em>not</em> need to send your answers ahead of time but please be prepared to briefly <strong>present</strong> your exercises during the group meeting next Wednesday (February 4). You do <em>not</em> need to send answers to the r4ds tutorials or book chapter exercises.</p>
-
-
-<script type="ojs-module-contents">
-eyJjb250ZW50cyI6W119
-</script>
-<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
-<div id="exercise-loading-status" class="d-flex gap-2">
-
+<p>4 - It’s now time to introduce <code>pwr</code> , a helpful package for running power analyses. When running such analyses, you will have precisely three out of the four parameters: power, n, d and alpha with an interest in computing the unknown parameter. <code>install.packages("pwr")</code> and <code>library(pwr)</code> if the package isn’t installed on your device. You can find more information about <code>pwr</code> <a href="https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html" target="_blank">here</a>.</p>
+<ul>
+<li>Let’s start by reusing the value of Cohen’s d (0.3) and sample size (n=20) from Q2. Use the code below to calculate the theoretical power you’d achieve. How does it compare with the value you empirically calculated?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>theoretical_power <span class="ot">&lt;-</span> <span class="fu">pwr.t.test</span>(<span class="at">n =</span> n, <span class="at">d =</span> d, <span class="at">sig.level =</span> alpha, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                                <span class="at">type =</span> <span class="st">"two.sample"</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>)<span class="sc">$</span>power</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="spinner-grow spinner-grow-sm">
+<ul>
+<li>Let’s now find the theoretical sample size you’d need to achieve a power of 0.5 (50%) and a Cohen’s d of 0.3. Now 0.8 (80%) How close were your previous empirical estimates?</li>
+</ul>
+</section>
+<section id="winners-curse-and-the-danger-of-low-powered-designs" class="level2">
+<h2 class="anchored" data-anchor-id="winners-curse-and-the-danger-of-low-powered-designs">Winner’s curse and the danger of low-powered designs</h2>
+<ul>
+<li>If it’s cheaper and faster, why shouldn’t we always just opt for a quick and easy <code>n = 12</code> for every animal experiment or n=40 in psychological research? As we will see, underpowered studies don’t just risk increasing the chance that we miss a true effect entirely (namely, falsely failing to reject the null hypothesis when the alternative was in fact true). It also risks something else…</li>
+<li>To understand this, let’s put statistics aside for a moment. Imagine you’re at a Sotherby’s auction and Article 66 on the list has caught your eye. You, as well as everyone else at the auction, is an expert auctioneer. You can’t be sure of its exact market value but you’ve formed a valid estimate of its value. Besides, you’ve now set your eye (and wallet) on it. After you’ve estimated what you think the true value is, you place your bid, consistent with that best guess. But so have 19 other expert auctioneers. You manage to outbid the others, congratulations! Going once, twice and the gavel declares you the winner of Article 66. The hapless losers file out of the auction house, while you proudly march to the platform to collect your expensive prize. However, upon further research, you discover the amount you paid grossly exceeded the intrinsic value of the item. You realize then that you have fallen into the dreaded <em>winner’s curse</em>.</li>
+</ul>
+<p>5 - Let’s start by adapting the code block that outputted <code>pvals</code> for <span class="math inline">\(10^4\)</span> simulations to also return the observed Cohen’s d.&nbsp;This will give us a distribution of Cohen’s d and the p-value after running a t-test.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pvals_d <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>, \(i) { </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(n,mu1,sd,n,mu2,sd) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarize</span>(<span class="at">pval =</span> <span class="fu">t.test</span>(x1,x2,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">var.equal=</span><span class="cn">TRUE</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">alpha=</span>alpha)<span class="sc">$</span>p.value,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">d =</span> <span class="fu">cohens_d</span>(n,n,<span class="fu">mean</span>(x1),<span class="fu">mean</span>(x2),<span class="fu">sd</span>(x1),<span class="fu">sd</span>(x2)))}) <span class="sc">|&gt;</span> <span class="fu">list_rbind</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Use <code>pwr</code> to calculate the sample size you’d need to achieve a power of 0.15 (15%) for a Cohen’s d of 0.5 (set <code>mu1=22</code> and <code>mu2=20</code> and <code>sd=4</code> (for both x and y) and n to the determined sample size). Now run the code!</p></li>
+<li><p>What’s the mean Cohen’s d of the output? Now filter your Cohen’s d values to return only those that were significant (p&lt;0.05). Calculate the mean of these filtered d values.</p></li>
+<li><p>What are the smallest significant <em>and positive</em> and significant <em>and negative</em> d values you found? How does it compare to the true Cohen’s d (=0.5)? Plot a histogram of Cohen’s d values, using <code>geom_vline()</code> to show the overall mean Cohen’s d, the smallest significant negative and positive Cohen’s d and the mean Cohen’s d after filtering for significant p-values.</p></li>
+<li><p>Now do the same thing for powers of 0.3, 0.5 and 0.8. What do you notice about the difference between the mean Cohen’s d before filtering and the smallest significant d as power increases?</p></li>
+<li><p>Given what you’ve seen now and the allegory of the unfortunate winning auctioneer, explain the winner’s curse.</p></li>
+</ul>
+<p>6 - Let’s end with a fun visualization that showcases these concepts! Copy the code below and run <code>visualize_output(n,mu1,mu2,sd_pooled)</code>, inspecting the plot. Don’t worry about the code! Also think about what we said about d values that were both significant and negative (shown as red dots in the plot below). Why do these inverted and significant d values occur at low power? Hint: use the RPsychologist visualization.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cohens_d <span class="ot">&lt;-</span> <span class="cf">function</span>(n1,n2,mu1,mu2,sd1,sd2){</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  diff <span class="ot">&lt;-</span> mu1<span class="sc">-</span>mu2</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  sd_pooled <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(((n1<span class="dv">-1</span>)<span class="sc">*</span>sd1<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (n2<span class="dv">-1</span>)<span class="sc">*</span>sd2<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(n1<span class="sc">+</span>n2<span class="dv">-2</span>))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  diff <span class="sc">/</span> sd_pooled</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>simulate_pvals <span class="ot">&lt;-</span> <span class="cf">function</span>(n, mu1, mu2, sd) {</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>, \(i) { </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(n,mu1,sd,n,mu2,sd) <span class="sc">|&gt;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarize</span>(<span class="at">pval =</span> <span class="fu">t.test</span>(x1,x2,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                              <span class="at">var.equal=</span><span class="cn">TRUE</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                              <span class="at">alpha=</span>alpha)<span class="sc">$</span>p.value,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">d =</span> <span class="fu">cohens_d</span>(n,n,<span class="fu">mean</span>(x1),<span class="fu">mean</span>(x2),<span class="fu">sd</span>(x1),<span class="fu">sd</span>(x2)))}) <span class="sc">|&gt;</span> <span class="fu">list_rbind</span>()</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>visualize_output <span class="ot">&lt;-</span> <span class="cf">function</span>(n,mu1,mu2,sd) {</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="fu">cohens_d</span>(n,n,mu1,mu2,sd,sd)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  nbatches <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="fu">set_names</span>(<span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">210</span>,<span class="dv">60</span>)), \(n) { </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    power <span class="ot">&lt;-</span> <span class="fu">pwr.t.test</span>(<span class="at">n =</span> n, <span class="at">d =</span> d, <span class="at">sig.level =</span> <span class="fl">0.05</span>)<span class="sc">$</span>power</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    d_sims <span class="ot">&lt;-</span> <span class="fu">simulate_pvals</span>(n,mu1,mu2,sd) <span class="sc">|&gt;</span> </span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">iteration =</span> n, <span class="at">power =</span> power)}) <span class="sc">|&gt;</span> <span class="fu">list_rbind</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">col =</span> <span class="fu">case_when</span>(d <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> pval <span class="sc">&lt;</span> <span class="fl">0.05</span> <span class="sc">~</span> <span class="st">"red"</span>,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>                d <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> pval <span class="sc">&lt;</span> <span class="fl">0.05</span> <span class="sc">~</span> <span class="st">"blue"</span>,</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>                <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"grey"</span>))</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(nbatches,<span class="fu">aes</span>(<span class="at">x=</span>iteration, <span class="at">y =</span> d,<span class="at">colour =</span> <span class="fu">I</span>(col))) <span class="sc">+</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="st">"jitter"</span>) <span class="sc">+</span> </span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept=</span>d,<span class="at">linetype=</span><span class="st">"dashed"</span>,<span class="at">linewidth=</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sample size"</span>, <span class="at">y =</span> <span class="st">"Cohen's d"</span>) <span class="sc">+</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> nbatches <span class="sc">|&gt;</span> <span class="fu">distinct</span>(iteration, power),</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">x =</span> iteration, <span class="at">y =</span> <span class="fl">1.1</span>, <span class="at">label =</span> <span class="fu">round</span>(power, <span class="dv">2</span>)),</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="fl">3.5</span>,</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">fontface =</span> <span class="st">"bold"</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>  p</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Now try changing <code>mu1</code> to 15.5</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## set params</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>mu1 <span class="ot">&lt;-</span> <span class="dv">16</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>mu2 <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>sd_pooled <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="do">## run</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize_output</span>(n,mu1,mu2,sd_pooled)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you wish to examine the Winner’s Curse in more detail and using simulation, we would recommend you read, <a href="https://www.sciencedirect.com/science/article/abs/pii/S2772766123000198?__cf_chl_tk=G4ui09G.0YO_4eog66rJkKLKZwcwerM4ry8g4vHk2qA-1773029923-1.0.1.1-_LTkmrPzTxEdn0GeLdyIPP6jg43_0tc3luuxXC9Fz9A#preview-section-snippets" target="_blank">The winner’s curse and related perils of low statistical power − spelled out and illustrated</a> (Seth Lindstromberg, 2023)</p>
 
-</div>
-</div>
-<script type="vfs-file">
-W10=
-</script>
+
+</section>
 
 </main> <!-- /main -->
-<script type="ojs-module-contents">
-eyJjb250ZW50cyI6W119
-</script>
-<script type="module">
-if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
-window._ojs.paths.runtimeToDoc = "../..";
-window._ojs.paths.runtimeToRoot = "../..";
-window._ojs.paths.docToRoot = "";
-window._ojs.selfContained = false;
-window._ojs.runtime.interpretFromScriptTags();
-</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -915,21 +1037,9 @@ window._ojs.runtime.interpretFromScriptTags();
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./Session_6.html" class="pagination-link" aria-label="Session 6: Functions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Session 6: Functions</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./Variance_2025.html" class="pagination-link" aria-label="Session 8: Variance &amp; Standard Deviation">
-        <span class="nav-page-text">Session 8: Variance &amp; Standard Deviation</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://caius-gibeily.github.io/r4dss25/edit/main/docs/Session_7.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://caius-gibeily.github.io/r4dss25/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://caius-gibeily.github.io/r4dss25/edit/main/docs/power2.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://caius-gibeily.github.io/r4dss25/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

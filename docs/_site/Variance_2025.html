@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Session 7: Iteration – Data Science and Statistics in R for Fellowship</title>
+<title>Session 8: Variance &amp; Standard Deviation – Data Science and Statistics in R for Fellowship</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Variance_2025.html" rel="next">
-<link href="./Session_6.html" rel="prev">
+<link href="./cov.html" rel="next">
+<link href="./Session_7.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -287,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">R for Data Science 2025-26</a></li><li class="breadcrumb-item"><a href="./Session_7.html">Session 7: Iteration</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Variance_2025.html">R for Statistics 2026</a></li><li class="breadcrumb-item"><a href="./Variance_2025.html">Session 8: Variance &amp; Standard Deviation</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -368,7 +368,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Session_7.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Session_7.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Session 7: Iteration</span></a>
   </div>
 </li>
@@ -385,7 +385,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Variance_2025.html" class="sidebar-item-text sidebar-link">
+  <a href="./Variance_2025.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Session 8: Variance &amp; Standard Deviation</span></a>
   </div>
 </li>
@@ -419,9 +419,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">R for Data Science 2025-26</a></li><li class="breadcrumb-item"><a href="./Session_7.html">Session 7: Iteration</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Variance_2025.html">R for Statistics 2026</a></li><li class="breadcrumb-item"><a href="./Variance_2025.html">Session 8: Variance &amp; Standard Deviation</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Session 7: Iteration</h1>
+<h1 class="title">Session 8: Variance &amp; Standard Deviation</h1>
 </div>
 
 
@@ -438,42 +438,86 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This session will build on last week’s methods for writing efficient code and reducing needless copy-and-paste through another pillar of programming: iteration. You are likely already familiar with using iteration, perhaps in the form of <code>for</code> or <code>while</code> loops in base R or another programming language. By building and then applying functions in Excel to multiple cells, you have also performed iteration. As with function writing, the goal is not to become fully proficient in the minutiae of iteration but rather to support thinking programmatically about writing efficient code. We will also be relying on iteration in the upcoming statistics sessions.</p>
-<p><strong>Extract examples from your previous work</strong> Before reading the book chapter, we’d like you to try recalling any examples of how you might have used iteration in your past work, whether in R, MATLAB, Excel or another language. What problem were you attempting to address and how did you use iteration to address it? Be prepared to share these examples in class.</p>
-<p><strong>Book chapter reading.</strong> Please read <a href="https://r4ds.hadley.nz/iteration.html" target="_blank">Chapter 26</a> in <em>R for Data Science</em> and then complete the exercises in the chapter.</p>
-<p><strong>Tutorials.</strong> Go through the <em>r4ds.tutorials: 26-iteration</em> tutorial. <em>Warning</em>: there is a bug in the tutorial in <em>Exercise 2, Save your work</em>. You will need to copy and paste the code block where you initialized <code>gapminder</code> in the previous exercise to get the code to run. Unfortunately, the tutorial does not maintain the object between tabs.</p>
-<p><strong>Exercises.</strong></p>
+<p>This week we will begin our statistics adventure by learning about population and estimated parameters (video 1), variance and standard deviation (video 2) and why dividing by N underestimates the variance (video 3).</p>
+<p>You will learn about the topics listed above by first studying the theory, provided via YouTube videos (this week all 3 videos are from StatQuest). Then you will work through some exercises, utilizing the R language to demonstrate various topics in a more “hands on” way, hopefully cementing the ideas presented in the videos. We have designed the exercises in ways we hope will help you to think statistically and generate discussion points. We will use the Wednesday group meetings to discuss the exercises and how conclusions drawn from them relate to the theory presented in the videos.</p>
+<p>Let’s jump in and get started with <a href="https://youtu.be/vikkiwjQqfU?si=j4jlYP6YbJD6LOgu" target="_blank">Video 1</a> (<em>Population and Estimated Parameters, Clearly Explained!!!</em>).</p>
 <ol type="1">
-<li>As we will be especially drawing on <code>map()</code> iteration during the statistics training, let’s focus on writing them.</li>
+<li>Probably the most important concept introduced in video 1 is the idea that when estimating population parameters from samples, the sample size affects how confident we can be in the accuracy of the estimates. To illustrate this point, take a look at the code below. This code chunk will draw random samples (5 different samples) from a normally distributed population with population parameters <code>mean = 20</code> and <code>sd = 10</code> (these parameters correspond to the values used by Josh in the video).</li>
 </ol>
-<ul>
-<li><p>Take the simple <code>vec</code> object below and try writing a <code>map()</code> function to return the square of each element. Use <code>list_c()</code> instead of <code>list_rbind()</code>. Of course, using a map iteration here is rather inefficient since many of R’s base functions are already ‘vectorized’, allowing them to perform multi-element operations without an explicit iteration. How should you square each element without using iteration? Knowing when to avoid explicit iteration will also improve the efficiency of your code.</p></li>
-<li><p>Within the <code>map()</code>, now save the output of vec when squared, cubed, and raised to the power of 4 in a tibble and collapse the output into a single tibble object.</p></li>
-</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>five_samples <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, \(i) <span class="fu">tibble</span>(<span class="at">values =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                                                    <span class="at">mean =</span> <span class="dv">20</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                                                    <span class="at">sd =</span> <span class="dv">10</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list_rbind</span>(<span class="at">names_to =</span> <span class="st">"sample"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<ul>
+<li><p>Run the code on your own machine in RStudio (be sure to load the <code>tidyverse</code> package first). Study the code and make sure you understand what each part does so you can explain it to the group when we meet on Wednesday. Specifically, consider: What does <code>map()</code> do in this case? What does the <code>\(i)</code> notation indicate? What does the output look like before piping to <code>list_rbind()</code>? What does the <code>names_to</code> argument in <code>list_rbind()</code> do?</p></li>
+<li><p>Next, calculate the mean and standard deviation of each of the samples in the <code>five_samples</code> object (using a combination of <code>group_by()</code>, <code>summarize()</code>, <code>mean()</code> and <code>sd()</code>). Take note of these values. How spread out are the values when you compare the estimates from the five different samples? Can you think of a way to quantify the spread?</p></li>
+<li><p>Change the code in the code chunk above so that instead of generating five samples with <code>n = 5</code> the code gives you five samples with <code>n = 50</code>. As before, estimate the mean and standard deviation for each of the five samples. Repeat the process, this time using <code>n = 500</code>. What conclusions can you draw about the relationship between sample size and the confidence we can have regarding the accuracy of estimates? How about the relationship between samples size and how spread out estimates are across different samples?</p></li>
+</ul>
 <ol start="2" type="1">
-<li>Let’s now consider a basic tibble, <code>dat</code> with three normally distributed random variables, <code>x1</code>, <code>x2</code> and <code>x3</code>.</li>
+<li><p>In Video 1, Josh showed how we can use a population distribution (histogram) to calculate probabilities and statistics. In the video example a population of 240 billion liver cells was used. This is a lot of observations, and even modern computers struggle a bit when working with such large numbers. Many times in statistics we rely on the assumption that samples around 10,000 observations generate population estimates close to the true population parameters.</p>
+<p>Generate a large sample (n = 10,000) using the same population parameters as in Exercise 1. Name the object <code>samp_10k</code>. Do you need to use <code>map()</code> in this case? Why/why not?</p></li>
 </ol>
 <ul>
-<li>Use a map to return the mean and standard deviation for each variable. Compare the output with the use of <code>across()</code> instead.</li>
-<li>How could you transform the output using <code>across()</code> into the same structure as the first, with separate columns for the mean and standard deviation?</li>
+<li><p>Check the assumption stated above, that estimates of the mean and standard deviation from samples with 10,000 observations are close to the true population parameters (in this case <code>mean = 20</code> and <code>sd = 10</code>).</p></li>
+<li><p>Use <code>ggplot()</code> to draw a histogram of the values in <code>samp_10k</code>. Make a density plot using <code>geom_density()</code> and adjust the <code>bw =</code> argument to make the curve look smooth and bell shaped. Compare the y-axis of these two plots. What is the difference?</p></li>
+<li><p>Calculate the proportion of values in <code>samp_10k</code> that fall within the range defined by the mean plus or minus 1, 2, and 3 standard deviations. How do your findings align with the so-called <a href="https://en.wikipedia.org/wiki/68–95–99.7_rule" target="_blank">68–95–99.7 rule</a>? Use <code>ggplot</code> to create a visualization of your findings.</p></li>
+<li><p>What is the probability of observing a value that is equal to or greater than 35, given population parameters <code>mean = 20</code> and <code>sd = 10</code> (in other words using the values in <code>samp_10k</code>)? This can be calculated in the same way as the histogram example in Video 1 (around the 2:30 mark).</p></li>
+<li><p>What is the probability of observing a value equal to 35 or <em>more extreme</em>? How do you interpret <em>more extreme</em> in this case? Is there a difference between <em>greater than</em> and <em>more extreme</em>? Be prepared to discuss your reasoning when we meet on Wednesday.</p></li>
 </ul>
+<p>We will now move on to <a href="https://youtu.be/SzZ6GpcfoQY?si=h6xo5NFTmbMbLhxf" target="_blank">Video 2</a> (<em>Calculating the Mean, Variance and Standard Deviation, Clearly Explained!!!</em>)</p>
+<ol start="3" type="1">
+<li>What does the <code>fun_x()</code> function in the code chunk below calculate? Explain what each line of the code is doing.</li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x1 =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="at">mean=</span> <span class="dv">4</span>, <span class="at">sd =</span> <span class="dv">1</span>),</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x2 =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">2</span>,<span class="at">sd =</span> <span class="dv">10</span>),</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x3 =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean=</span> <span class="dv">8</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fun_x <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  dev <span class="ot">&lt;-</span> x <span class="sc">-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  dev_sq <span class="ot">&lt;-</span> dev <span class="sc">^</span> <span class="dv">2</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  s_dev_sq <span class="ot">&lt;-</span> <span class="fu">sum</span>(dev_sq)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  s_dev_sq <span class="sc">/</span> <span class="fu">length</span>(x)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Let’s now plot a histogram for each variable. Map through <code>dat</code>, using <code>ggplot</code> to construct histogram objects. Since you’re creating a list of ggplot objects, <code>list_rbind()</code> won’t work here. Use <code>patchwork::wrap_plots</code> to show the plots side-by-side.</li>
+<li>Using <code>fun_x()</code> as a starting point, write a function that <em>estimates</em> the population standard deviation.</li>
 </ul>
-<ol start="3" type="1">
-<li>Finally, come up with two of your own exercises, one involving modifying columns of a tibble (i.e.&nbsp;using <code>across()</code>, <code>if_any()</code> or <code>if_all()</code>) and the other, involving a map function. If you’re feeling adventurous, you could also try experimenting with <code>map2()</code> or integrating your exercises into functions. Like last week, please try embedding them into a Quarto document, using code folding to hide the solutions. Your exercise could also be based on the iterations example from your previous work.</li>
+<ol start="4" type="1">
+<li>Using the <code>tibble()</code> function, create a tibble with two columns, <code>x</code> and <code>y</code>, each containing six observations with no duplicated values, following the instructions below.</li>
 </ol>
-<p>You do <em>not</em> need to send your answers ahead of time but please be prepared to briefly <strong>present</strong> your exercises during the group meeting next Wednesday (February 4). You do <em>not</em> need to send answers to the r4ds tutorials or book chapter exercises.</p>
+<ul>
+<li>Copy the code from the chunk below and fill in the blanks so that the variable <code>x</code> has a mean of <code>0</code> and a variance of exactly <code>6</code>. To do this, it helps to think about what a variance of <code>6</code> corresponds to in terms of the sum of squares, given the number of observations, and then consider how much of that sum of squares is already accounted for by the four values provided and how much is “left.” Why are pairs of values with opposite signs provided? If you apply this idea to the missing observations, their values are determined; you then just need to solve for the missing values using the variance formula. Once you have completed the vector, show that <code>x</code> has a variance of exactly <code>6</code> by using the <code>summarize()</code> and <code>var()</code> functions.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, _____, _____))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Next, add another variable (<code>y</code>) to the <code>tibble()</code> code. This variable should have a mean of <code>10</code> and a standard deviation of <code>5</code>. You now need to determine six values yourself by working backwards from the standard deviation formula. Check the standard deviation of <code>y</code> using the function you created for Exercise 3.</p></li>
+<li><p>Use the <code>mutate()</code> function to create the variable <code>z</code> based on the variable <code>y</code> by subtracting the mean of <code>y</code> from all values of <code>y</code> and then dividing by the standard deviation of <code>y</code>. What are the mean and standard deviation of <code>z</code>?</p></li>
+</ul>
+<p>We will now go a bit deeper into the theory of variance, focusing in particular on why we divide by <code>n − 1</code> when estimating the population variance. Watch <a href="https://youtu.be/sHRBg6BhKjI?si=9BhhL_Y-QTzrN9v3" target="_blank">Video 3</a> (<em>Why Dividing by N Underestimates the Variance</em>). In this video, Josh does a great job explaining why using the sample mean leads to an underestimation of the variance, but the explanation is somewhat theoretical. We can use a simple simulation to <em>demonstrate empirically</em> that dividing by <code>n − 1</code> performs better than dividing by <code>n</code> (and other alternatives we might want to try).</p>
+<ol start="5" type="1">
+<li>Study the function in the code chunk below and explain what each part does. Fill in the blanks so that the <code>samples_df</code> object contains 10,000 samples, each of size 10, drawn from a population with a mean of 5 and a variance of 4. Next, complete the code so that the five columns generated in <code>summarize()</code> use values of <code>a</code> ranging from −2 to 2. What does the output tell us? Finally, visualize the results.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>var_a <span class="ot">&lt;-</span> <span class="cf">function</span>(x, a){</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  ssq <span class="ot">&lt;-</span> <span class="fu">sum</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x)) <span class="sc">^</span> <span class="dv">2</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  ssq <span class="sc">/</span> (<span class="fu">length</span>(x) <span class="sc">+</span> a)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>samples_df <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span>_____, \(i) <span class="fu">tibble</span>(<span class="at">values =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> _____, </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                                                      <span class="at">mean =</span> _____, </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                                                      <span class="at">sd =</span> _____))) <span class="sc">|&gt;</span> </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list_rbind</span>(<span class="at">names_to =</span> <span class="st">"sample"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>samples_df <span class="sc">|&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sample) <span class="sc">|&gt;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n_minus_2 =</span> <span class="fu">var_a</span>(values, <span class="at">a =</span> _____),</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_minus_1 =</span> <span class="fu">var_a</span>(values, <span class="at">a =</span> _____),</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">var_a</span>(values, <span class="at">a =</span> _____),</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_plus_1 =</span> <span class="fu">var_a</span>(values, <span class="at">a =</span> _____),</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_plus_2 =</span> <span class="fu">var_a</span>(values, <span class="at">a =</span> _____)) <span class="sc">|&gt;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">6</span>, mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 <script type="ojs-module-contents">
@@ -917,13 +961,13 @@ window._ojs.runtime.interpretFromScriptTags();
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Session_6.html" class="pagination-link" aria-label="Session 6: Functions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Session 6: Functions</span>
+      <a href="./Session_7.html" class="pagination-link" aria-label="Session 7: Iteration">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Session 7: Iteration</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Variance_2025.html" class="pagination-link" aria-label="Session 8: Variance &amp; Standard Deviation">
-        <span class="nav-page-text">Session 8: Variance &amp; Standard Deviation</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./cov.html" class="pagination-link" aria-label="Session 9: Covariance &amp; Correlation">
+        <span class="nav-page-text">Session 9: Covariance &amp; Correlation</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -932,4 +976,4 @@ window._ojs.runtime.interpretFromScriptTags();
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://caius-gibeily.github.io/r4dss25/edit/main/docs/Session_7.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://caius-gibeily.github.io/r4dss25/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://caius-gibeily.github.io/r4dss25/edit/main/docs/Variance_2025.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://caius-gibeily.github.io/r4dss25/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
