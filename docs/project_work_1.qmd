@@ -1,5 +1,5 @@
 ---
-title: "Project work I"
+title: "Session 13: Project work I"
 format: html
 ---
 
@@ -38,8 +38,8 @@ When data violate this assumption, drawing inferences from the test statistic wi
 -   Use the `infer` package to visualize the observed value and probability density for differences equal to and more extreme than the observed difference.
 
 6. To highlight the ability to compute different test statistics via resampling techniques, we'd like to explore a test of differences in proportions. The classical counterpart to this test is a one- or two-sampled z-test of proportions. Choose a binary grouping variable and a response variable (variables that take values of 0 and 1). If you don't have variables of this type in your data, either try discretizing a continuous numeric variable or switch over to an R dataset of your choosing.
--   Compute the proportion of 'successes' (where the response variable == 1 or simply one of the two named factor levels) within each group. Across 10,000 permutation, shuffle the response variable relative to the grouping variable and recalculate the proportions of successes in each shuffled group. 
--   Plot a histogram or a `geom_density` plot of the null distribution of proportional differences between the two groups and annotate it with the proportion of observed successes. What is the probability of finding a proportional difference equal to or more extreme than the one observed? 
+-   Compute the proportion of 'successes' (where the response variable == 1 or simply one of the two named factor levels) within each group. Across 10,000 permutation, shuffle the response variable across groups and recalculate the proportions of successes in each shuffled group. 
+-   Plot a histogram or a `geom_density` plot of the null distribution of proportional differences between the two groups and annotate it with the group difference in the proportion of observed successes. What is the probability of finding a proportional difference equal to or more extreme than the one observed? 
 
 7. Select the same binary grouping variable and a numeric outcome variable in your data. 
 -   First, calculate Cohen’s d to quantify the effect size between the two groups. Then, using the sample sizes of your groups as *fixed values*, simulate how statistical power changes for different hypothetical values of Cohen’s d (this simulation will require two nested map functions). 
@@ -48,10 +48,11 @@ When data violate this assumption, drawing inferences from the test statistic wi
 - Brainstorm how you might determine a reasonable effect size within your field. 
 
 8. Using the same binary grouping variable and numeric outcome as in the previous exercise, generate a bootstrapped sampling distribution of Cohen’s d by repeatedly resampling *within each group* and recalculating the effect size for each iteration. Examine the resulting distribution and calculate the median as well as the 25th and 75th percentiles, which represent the interquartile range of plausible effect sizes. 
--   Use these three values to calculate the corresponding statistical power for detecting a difference given your group sample sizes. 
+-   Use these three values to calculate the corresponding statistical power (using `pwr`) for detecting a difference given your group sample sizes. You should end up with an interquartile range of power.
 -   Reflect on how considering the interquartile range captures the most likely values of the effect size and how this uncertainty influences estimated power. What are the pitfalls of performing post hoc power calculations and why might it bias our inference about the true power to detect an effect? If you're unsure, try skimming [Post hoc Power is Not Informative](https://pmc.ncbi.nlm.nih.gov/articles/PMC9452450/){target="_blank"} for some ideas. Discuss the implications for interpreting results or planning future studies, keeping in mind that extreme bootstrap values can overstate uncertainty, while the 25th–75th percentile range provides a more robust estimate of typical effect sizes.
 
 9. Let's revisit the idea of the Winner's curse we discussed last week.
--   Given the sample size you have, use simulation to generate a Cohen's d distribution with each group's respective sample size and estimated mean and sd. Using code we used last week, also compute the p-value for each iteration. What is the smallest significant Cohen's d you could theoretically find (at an $\alpha = 0.05$)? 
--   Create another Cohen's d distribution using sample sizes that are *half* and *5x* your current sample size. What are the smallest significant Cohen's d values you could find in each scenario? 
--   For all three scenarios (half, full and 5x sample size), find the interquartile range. Reflect on why larger samples reduce the observed spread or 'vibration' of effect sizes around the true value. 
+-   We will use the same binary grouping variable and numeric outcome. Please use *permutation* to generate a distribution of Cohen's d values by shuffling the numeric outcome variable multiple times across groups. What would you expect the mean value of this distribution to be? 
+-   What does this distribution represent? You may find it helpful to revisit the [RPsychologist](https://rpsychologist.com/d3/nhst/){target="_blank"} visualization. 
+-   Plot both the bootstrapped sampling distribution of Cohen's d you generated in Q8 and the distribution of Cohen's d on the permuted data on the same axes using two `geom_density` plots. Add a vertical line to the plot marking the mean Cohen's d in the distribution of bootstrapped samples. Now add lines at the 2.5th and 97.5th percentiles of the distribution of Cohen's d from the permuted data. What do these two lines represent? 
+-   Let's now explore what happens when you halve your sample. Take the first 50% of your samples of each of your groups and repeat the process of using permutation and bootstrapping to generate two distributions. Plot the distributions and compare the results with the full sample.
