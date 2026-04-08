@@ -25,7 +25,7 @@ jobs:
         with:
           use-public-rspm: true
       - name: Install R packages
-        run: Rscript -e 'install.packages(c("rmarkdown", "knitr", "ggplot2","tidyverse","plotly","webr","pwr","janitor","palmerpenguins","nycflights13","ggthemes"))'
+        run: Rscript -e 'install.packages(c("rmarkdown", "knitr", "ggplot2","tidyverse","plotly","webr","pwr","janitor","palmerpenguins","rstatix","ggthemes"))'
       - name: Render Quarto Project
         env:
           QUARTO_PRINT_STACK: true
