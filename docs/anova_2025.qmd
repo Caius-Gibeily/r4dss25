@@ -129,7 +129,7 @@ eta_sq <- function(data, values_col, group_col){
 
 * Copy the code used to generate `d1` and change the numeric values to make the mean differences between the groups very large, but the spread of the values around each group mean small. Calculate both the F-statistic and $\eta^2$. What do you observe? What happens if you make the mean differences small? 
 
-6. Now that we know what effect size metric to use when working with ANOVAs, we can calculate statistical power. We help you with the code for this. First, here is a way to simulate data with specified values for total sample size, $eta^2$ and number of groups. Note that the `rnorm_exact()` function is just a helper, the main work is done by `sim_eta()`. 
+6. Now that we know what effect size metric to use when working with ANOVAs, we can calculate statistical power. We help you with the code for this. First, here is a way to simulate data with specified values for total sample size, $\eta^2$ and number of groups. Note that the `rnorm_exact()` function is just a helper, the main work is done by `sim_eta()`. 
 
 ```{r}
 #| eval: false
@@ -176,12 +176,12 @@ sims_ep <- sims |>
 
 ```
  
-  * Now calculate the power using the p-values stored in `sims_ep`. Think about the parameters we used for the simulation. Is an $\eta^s$ of 0.1 small or large (you may want to ask the internet)? How about the sample size? 
+  * Now calculate the power using the p-values stored in `sims_ep`. Think about the parameters we used for the simulation. Is an $\eta^2$ of 0.1 small or large (you may want to ask the internet)? How about the sample size? 
 
   * How bad is the winner's curse in this case? How much greater (in terms of proportion) is the smallest $\eta^2$ associated with a significant p-value than the true $\eta^s$ (what you set `eta_sq` to in the simulation)? 
   
   * Show, by running multiple power simulations, if the power of an ANOVA test is affected by the number of groups in the data analyzed. Keep `total_n` the same and change `n_grps`. Make sure `total_n / n_grps` is an integer, otherwise somewhat unpredictable things can happen.
-  |> 
+  
   * You are asked by your PI to perform a power calculation for them. They have a study design where they want to compare 3 groups (representing different ages) regarding scores on a specific cognitive task. Data will be collected in a way to make sure group sizes are equal. Previous research has shown that an reasonable effects size in this case is $\eta^2 = 0.08$. Your PI wants to know the sample size to put in their grant application. The statistical power should be no less than 80%. What is your answer? We want you to use `map()` to loop through different sample sizes and, for each sample size, calculate the power. One way to achieve this is to first create a function that includes the code from above to generate the `sims` and `sims_ep` objects, and then uses `sims_ep` to calculate the power. Next, use this function within a `map()` call to compute the power for different sample sizes. Finally, summarize your results in a plot showing the relationship between sample size and power as a curve.
   
 7. When we extracted the p-values that went into the `sims_ep` object, we used this ugly line of code: `p = summary(fit)[[1]][["Pr(>F)"]][1]`. Often times, the output from functions running statistical models in R is stored in a way that makes it a bit tricky to extract what you want. Luckily, there is a package called `broom` that helps you clean up model output. Run an ANOVA using the `aov()` function and use the `tidy()` function as shown [here](https://broom.tidymodels.org/reference/tidy.aov.html){target="_blank"} to pull out model output in a tidy format. 

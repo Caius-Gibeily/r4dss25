@@ -1,5 +1,5 @@
 ---
-title: "Session 15: Post-hoc tests & multiple comparisons"
+title: "Session 15: Post hoc tests & multiple comparisons"
 format: html
 ---
 
@@ -7,7 +7,7 @@ Last week we introduced a new type of statistical test that helps us determine w
 
 However, that is all we can conclude from the ANOVA alone. To gain a more fine-grained understanding of the differences in our data, we need to conduct follow-up analyses, referred to as *post hoc* tests. This short [video](https://youtu.be/qrJI8BFbhyA?si=CgWyw7HeJhdS0ro3){target="_blank"} explains the main concepts. The idea is straightforward: we perform individual comparisons between every possible pair of groups (often referred to as *pairwise comparisons*) to identify exactly where the differences lie. These comparisons can be carried out using tests you are already familiar with, such as t-tests or, preferably, permutation tests.
 
-To illustrate the most important aspects of post-hoc testing, we introduce a new data set that can be downloaded by clicking the button below. 
+To illustrate the most important aspects of post hoc testing, we introduce a new data set that can be downloaded by clicking the button below. 
 
 ```{r}
 #| echo: false
@@ -35,7 +35,7 @@ df_null |>
     csv2 = FALSE
   )
 ```
-
+\
 
 1. Read in the `.csv` file and plot each group’s mean with its standard error of the mean (SEM). Next, run an ANOVA to assess whether there is any overall evidence of differences among the group means. Based on the p-value from the ANOVA, would you consider it appropriate to proceed with post hoc tests in this case? Briefly justify your answer.
  
@@ -43,7 +43,7 @@ df_null |>
 
   * How many unique pair-wise comparisons do we need to perform in this case (remember that for example testing A vs B will be the same as testing B vs A)? Can you figure out a formula that will calculate the number of comparisons for any number of groups?
 
-  * We will not ask you to run manual pairwise permutation tests for all groups in the data you just analysed with ANOVA. Instead, use the `rcompanion` package and the `pairwisePermutationTest()` function, which implements computational optimizations to perform these tests efficiently. Apply this function to carry out permutation based post-hoc tests. The `p.value` column in the output reports the unadjusted significance level for each pairwise comparison (you can ignore the `p.adjust` column for now). Are there any significant pairwise comparisons in these data?
+  * We will not ask you to run manual pairwise permutation tests for all groups in the data you just analysed with ANOVA. Instead, use the `rcompanion` package and the `pairwisePermutationTest()` function, which implements computational optimizations to perform these tests efficiently. Apply this function to carry out permutation based post hoc tests. The `p.value` column in the output reports the unadjusted significance level for each pairwise comparison (you can ignore the `p.adjust` column for now). Are there any significant pairwise comparisons in these data?
    
    * Plot a histogram of the p values (you may need to ensure that the p-values from `pairwisePermutationTest()` are coded as numeric). What pattern would you expect to see if there were an enrichment of true positive comparisons in the data? How might the distribution look if there were no true differences between groups? Which of these patterns does your histogram most closely resemble?
 
@@ -237,6 +237,7 @@ q_values <- cross_join(sum, sum,
 ```{r}
 #| warning: false
 #| echo: false
+#| fig-align: center
 library(tidyverse)
 library(rstatix)
 set.seed(04152026)
@@ -354,7 +355,7 @@ ggplot(p_vals, aes(x = rank, y = p_val, colour = method)) +
   * 2. Reflect on what you see for each correction method. Which is most conservative? Which is least? 
   * 3. Create a similar plot for the first dataset you downloaded and compare the uncorrected p-values with each correction method.
 
-7. The final thing after running an ANOVA, finding a significant omnibus test p-value and continuing with post-hoc tests, is to plot the results. Often times we see plots in papers showing group stats (as boxplots or bar graphs or something of that sort) with annotations added to communicate the significance of pair-wise comparisons. This is easy to do if you know how to make ggplots, with help from the `ggpubr` and `rstatix` packages. Let's revisit the `penguins` data. Investigate some relationship in this data set you find interesting, create an appropriate plot and check out [this article](https://www.datanovia.com/en/blog/how-to-add-p-values-onto-basic-ggplots/){target="_blank"} on how to add p-value annotations. You will probably find the *Pairwise comparisons* section most helpful. Note that a function named `t_test()` from the `rstatix` package is used here. This is the same name as a function in the `infer` package we have used before, so if you run into problems with the code in the article, try unloading the `infer` package. 
+7. The final thing after running an ANOVA, finding a significant omnibus test p-value and continuing with post hoc tests, is to plot the results. Often times we see plots in papers showing group stats (as boxplots or bar graphs or something of that sort) with annotations added to communicate the significance of pair-wise comparisons. This is easy to do if you know how to make ggplots, with help from the `ggpubr` and `rstatix` packages. Let's revisit the `penguins` data. Investigate some relationship in this data set you find interesting, create an appropriate plot and check out [this article](https://www.datanovia.com/en/blog/how-to-add-p-values-onto-basic-ggplots/){target="_blank"} on how to add p-value annotations. You will probably find the *Pairwise comparisons* section most helpful. Note that a function named `t_test()` from the `rstatix` package is used here. This is the same name as a function in the `infer` package we have used before, so if you run into problems with the code in the article, try unloading the `infer` package. 
 
-  * The example in the article shared above uses theory-based t-tests (that is what the `t_test()` function from the `rstatix` package does) to calculate the post-hoc p-values. But what about if you instead (as you should) prefer to use p-values from permutation tests. Here is another [article](https://www.datanovia.com/en/blog/ggpubr-how-to-add-p-values-generated-elsewhere-to-a-ggplot/){target="_blank"} describing how you can add p-values *computed from elsewhere*. Add multiple comparisons corrected (pick your favorite correction method) permutation-based (pick your favorite way to run the tests) p-values to your penguins plot. 
+  * The example in the article shared above uses theory-based t-tests (that is what the `t_test()` function from the `rstatix` package does) to calculate the post hoc p-values. But what about if you instead (as you should) prefer to use p-values from permutation tests. Here is another [article](https://www.datanovia.com/en/blog/ggpubr-how-to-add-p-values-generated-elsewhere-to-a-ggplot/){target="_blank"} describing how you can add p-values *computed from elsewhere*. Add multiple comparisons corrected (pick your favorite correction method) permutation-based (pick your favorite way to run the tests) p-values to your penguins plot. 
 

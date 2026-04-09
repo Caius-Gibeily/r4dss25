@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Project work I – Data Science and Statistics in R for Fellowship</title>
+<title>Session 13: Project work I – Data Science and Statistics in R for Fellowship</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./anova_2025.html" rel="next">
 <link href="./power_2025.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -73,35 +74,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -276,7 +248,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Variance_2025.html">R for Statistics 2026</a></li><li class="breadcrumb-item"><a href="./project_work_1.html">Project work I</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Variance_2025.html">R for Statistics 2026</a></li><li class="breadcrumb-item"><a href="./project_work_1.html">Session 13: Project work I</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -405,7 +377,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./project_work_1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Project work I</span></a>
+ <span class="menu-text">Session 13: Project work I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./anova_2025.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Session 14: One-way ANOVA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Post-hoc_2025.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Session 15: Post hoc tests &amp; multiple comparisons</span></a>
   </div>
 </li>
       </ul>
@@ -420,9 +404,9 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Variance_2025.html">R for Statistics 2026</a></li><li class="breadcrumb-item"><a href="./project_work_1.html">Project work I</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Variance_2025.html">R for Statistics 2026</a></li><li class="breadcrumb-item"><a href="./project_work_1.html">Session 13: Project work I</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Project work I</h1>
+<h1 class="title">Session 13: Project work I</h1>
 </div>
 
 
@@ -441,7 +425,7 @@ window.Quarto = {
 
 <p>After five weeks of statistics training (already!), we would like to switch gears a bit. Instead of introducing new topics, we would like to ask you to apply what you have learned so far by conducting analyses on data you are familiar with.</p>
 <p>We are aware that many of you have already worked with real Marcus data for some time and have likely implemented statistical methods that go beyond what we have covered so far in the training. This week’s assignment is therefore not necessarily intended to help you make direct progress on your project work. Rather, it should be viewed as an opportunity to practice the specific methods we have introduced, with a focus on simulation, bootstrapping, and permutation. We believe that these methods not only provide a general statistical framework that supports robust workflows and reliable results, but also help strengthen statistical reasoning. In turn, this can deepen your analytic understanding and help you identify appropriate methods for future data analysis challenges.</p>
-<p>We advise you to work with your own project data as much as possible. However, if some of the exercises described below cannot be carried out using your data, for example because your dataset contains too few variables, lacks suitable variation, or does not include the types of variables required for a particular method, please feel free use datasets available in R packages. Examples of such datasets include <em>sleep</em> (effects of sleep medication), <em>PlantGrowth</em> (group comparisons), <em>ToothGrowth</em> (effects of different treatments on growth), and anxiety or depression-related datasets available in packages such as <em>datasets</em> or <em>psych</em>.</p>
+<p>We advise you to work with your own project data as much as possible. However, if some of the exercises described below cannot be carried out using your data, for example because your dataset contains too few variables, lacks suitable variation, or does not include the types of variables required for a particular method, please feel free to use datasets available in R packages. Examples of such datasets include <em>sleep</em> (effects of sleep medication) and <em>PlantGrowth</em> (group comparisons).</p>
 <p>Use Quarto to organize your analyses, combining code, results, and reflections in a single reproducible document. Please prepare a clear final report with figures and key conclusions, and be ready to present your work next Wednesday.</p>
 <ol type="1">
 <li>For a numeric variable in your data, calculate its mean and standard deviation, and then use simulation to estimate a 95% confidence interval for the mean.</li>
@@ -456,7 +440,7 @@ window.Quarto = {
 <li>Many classical <em>parametric</em> statistical tests (i.e.&nbsp;<em>t</em> tests) make certain assumptions about the data. One key assumption is that observations should be drawn from a particular distribution, commonly a normal distribution. When data violate this assumption, drawing inferences from the test statistic will inevitably be invalid. As you inspect your dataset, perhaps plotting variable histograms to gauge normality of continuous variables, you may observe a left- or right-tailed skew. How much skewness is acceptable (is ‘normalish’) before violating assumptions (though other measures of normality are also relevant, including tail density)? Of course, this parametric assumption is one of the reasons why this training has encouraged the use of such <em>non-parametric</em> techniques as resampling (bootstrapping and permutation), which exacts no such requirement of the data.</li>
 </ol>
 <ul>
-<li>We would like you to take the same numeric variable in your data and use bootstrapping to test its skewness. Specifically, you will need to compute the difference between the mean and median for each bootstrapped sample you take.</li>
+<li>We would like you to take the same numeric variable in your data and use bootstrapping to test its skewness. Specifically, you will need to compute the difference between the mean and median, a commonly used simple indicator of skewness, for each bootstrapped sample you take.</li>
 <li>If the data were perfectly normally distributed, what would the difference between mean and median be? What sign would you expect for increasingly left- or increasingly right-skewed data?</li>
 <li>Calculate the 95% confidence interval around the mean from your bootstrapped samples, using approaches covered in the previous sessions. How would you interpret a CI that overlapped with 0?</li>
 <li>Compare your findings with a common test of normality, the <em>Shapiro-Wilk</em> test using <code>shapiro.test()</code>, where lower W values (and lower p-values) indicate decreasing likelihood of the sample following a normal distribution.</li>
@@ -465,7 +449,7 @@ window.Quarto = {
 <li>Select two numeric variables in your data and calculate their covariance.</li>
 </ol>
 <ul>
-<li>What is the maximum possible covariance of the two variables, assuming a perfect positive relationship? Divide the observed covariance between the two variables. What have you just calculated? As a quick refresher, what other method could you use to standardize covariance?</li>
+<li>What is the maximum possible covariance of the two variables, assuming a perfect positive relationship? Divide the observed covariance by the maximum possible covariance. What have you just calculated? As a quick refresher, what other method could you use to standardize covariance?</li>
 <li>Next, use a permutation test by randomly shuffling one variable many times and calculating the correlation for each permutation. Compare your observed correlation to the distribution obtained from the permutations and visualize the permutation distribution, marking your observed correlation to illustrate the concept of statistical significance.</li>
 </ul>
 <ol start="4" type="1">
@@ -485,11 +469,11 @@ window.Quarto = {
 <li>Use the <code>infer</code> package to visualize the observed value and probability density for differences equal to and more extreme than the observed difference.</li>
 </ul>
 <ol start="6" type="1">
-<li>To highlight the ability to compute different test statistics via resampling techniques, we’d like to explore a test of differences in proportions. The classical counterpart to this test is a one- or two-sampled z-test of proportions. Choose a binary grouping variable and a response variable (variables that take values of 0 and 1). If you don’t have variables of this type in your data, either try discretizing two continuous numeric variables or switch over to an R dataset of your choosing.</li>
+<li>To highlight the ability to compute different test statistics via resampling techniques, we’d like to explore a test of differences in proportions. The classical counterpart to this test is a one- or two-sampled z-test of proportions. Choose a binary grouping variable and a response variable (variables that take values of 0 and 1). If you don’t have variables of this type in your data, either try discretizing a continuous numeric variable or switch over to an R dataset of your choosing.</li>
 </ol>
 <ul>
-<li>Using permutation, compute the proportion of ‘successes’ (where the response variable == 1, or simply one of the two named factor levels) within each group. You could do this using the <code>infer</code> package (scroll down <a href="https://cran.r-project.org/web/packages/infer/vignettes/infer.html" target="_blank">here</a> to the section on proportions) or using standard tidyverse functions.</li>
-<li>Plot a histogram or KDE of the null distribution of proportional differences between the two groups and annotate it with the proportion of observed success using <code>infer</code>. What is the probability of finding a proportional difference equal to or more extreme than the one observed?</li>
+<li>Compute the proportion of ‘successes’ (where the response variable == 1 or simply one of the two named factor levels) within each group. Across 10,000 permutation, shuffle the response variable across groups and recalculate the proportions of successes in each shuffled group.</li>
+<li>Plot a histogram or a <code>geom_density</code> plot of the null distribution of proportional differences between the two groups and annotate it with the group difference in the proportion of observed successes. What is the probability of finding a proportional difference equal to or more extreme than the one observed?</li>
 </ul>
 <ol start="7" type="1">
 <li>Select the same binary grouping variable and a numeric outcome variable in your data.</li>
@@ -501,14 +485,21 @@ window.Quarto = {
 <li>Brainstorm how you might determine a reasonable effect size within your field.</li>
 </ul>
 <ol start="8" type="1">
-<li>Using the same binary grouping variable and numeric outcome as in the previous exercise, generate a bootstrapped sampling distribution of Cohen’s d by repeatedly resampling within each group and recalculating the effect size for each iteration. Examine the resulting distribution and calculate the 25th and 75th percentiles, which represent the interquartile range of plausible effect sizes.</li>
+<li>Using the same binary grouping variable and numeric outcome as in the previous exercise, generate a bootstrapped sampling distribution of Cohen’s d by repeatedly resampling <em>within each group</em> and recalculating the effect size for each iteration. Examine the resulting distribution and calculate the median as well as the 25th and 75th percentiles, which represent the interquartile range of plausible effect sizes.</li>
 </ol>
 <ul>
-<li>Use these two values to calculate the corresponding statistical power for detecting a difference given your group sample sizes and observed Cohen’s d.&nbsp;</li>
-<li>Reflect on how considering the interquartile range captures the most likely values of the effect size and how this uncertainty influences estimated power. What are the pitfalls of performing post hoc power calculations and why might it bias our inference about the true power to detect an effect? If you’re unsure, try skimming <a href="Post hoc Power is Not Informative" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC9452450/</a> for some ideas. Discuss the implications for interpreting results or planning future studies, keeping in mind that extreme bootstrap values can overstate uncertainty, while the 25th–75th percentile range provides a more robust estimate of typical effect sizes.</li>
+<li>Use these three values to calculate the corresponding statistical power (using <code>pwr</code>) for detecting a difference given your group sample sizes. You should end up with an interquartile range of power.</li>
+<li>Reflect on how considering the interquartile range captures the most likely values of the effect size and how this uncertainty influences estimated power. What are the pitfalls of performing post hoc power calculations and why might it bias our inference about the true power to detect an effect? If you’re unsure, try skimming <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9452450/" target="_blank">Post hoc Power is Not Informative</a> for some ideas. Discuss the implications for interpreting results or planning future studies, keeping in mind that extreme bootstrap values can overstate uncertainty, while the 25th–75th percentile range provides a more robust estimate of typical effect sizes.</li>
 </ul>
-<p>9 Let’s revisit the idea of the Winner’s curse we discussed last week. - Given the sample size you have and bootstrapped sampling distribution of Cohen’s d you generated, what is the smallest significant Cohen’s d you could theoretically find (at an <span class="math inline">\(\alpha = 0.05\)</span>)?<br>
-- Using simulation, create another Cohen’s d distribution using sample sizes that are half and 5x your current sample size. What are the smallest significant Cohen’s d values you could find in each scenario?</p>
+<ol start="9" type="1">
+<li>Let’s revisit the idea of the Winner’s curse we discussed last week.</li>
+</ol>
+<ul>
+<li>We will use the same binary grouping variable and numeric outcome. Please use <em>permutation</em> to generate a distribution of Cohen’s d values by shuffling the numeric outcome variable multiple times across groups. What would you expect the mean value of this distribution to be?</li>
+<li>What does this distribution represent? You may find it helpful to revisit the <a href="https://rpsychologist.com/d3/nhst/" target="_blank">RPsychologist</a> visualization.</li>
+<li>Plot both the bootstrapped sampling distribution of Cohen’s d you generated in Q8 and the distribution of Cohen’s d on the permuted data on the same axes using two <code>geom_density</code> plots. Add a vertical line to the plot marking the mean Cohen’s d in the distribution of bootstrapped samples. Now add lines at the 2.5th and 97.5th percentiles of the distribution of Cohen’s d from the permuted data. What do these two lines represent?</li>
+<li>Let’s now explore what happens when you halve your sample. Take the first 50% of your samples of each of your groups and repeat the process of using permutation and bootstrapping to generate two distributions. Plot the distributions and compare the results with the full sample.</li>
+</ul>
 
 
 
@@ -932,6 +923,9 @@ window.Quarto = {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./anova_2025.html" class="pagination-link" aria-label="Session 14: One-way ANOVA">
+        <span class="nav-page-text">Session 14: One-way ANOVA</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
