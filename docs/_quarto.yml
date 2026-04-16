@@ -29,6 +29,7 @@ website:
           - project_work_1.qmd
           - anova_2025.qmd
           - Post-hoc_2025.qmd
+          - stats_journal_club.qmd
 theme:
   light: cosmo
   dark: darkly
