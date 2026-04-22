@@ -1,5 +1,5 @@
 ---
-title: "Session 17: Repeated measures ANOVA & paired post hoc tests"
+title: "Repeated measures ANOVA & paired post hoc tests"
 format: html
 ---
 
@@ -51,6 +51,7 @@ d1_rm |>
             mutate(data = "d2_rm")) |> 
   add_row(d3_rm |> 
             mutate(data = "d3_rm")) |> 
+  group_by(data, age) |> 
   summarize(mean = mean(values),
             sd = sd(values)) |> 
   mutate(age = factor(age, levels = c("6m", "12m", "18m", "24m"))) |> 
