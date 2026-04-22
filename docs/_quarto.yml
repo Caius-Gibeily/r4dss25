@@ -30,6 +30,8 @@ website:
           - anova_2025.qmd
           - Post-hoc_2025.qmd
           - stats_journal_club.qmd
+          - rm-anova_2025.qmd
+          
 theme:
   light: cosmo
   dark: darkly
