@@ -13,6 +13,7 @@ expected_preferences <- tibble(laptop = c("PC","PC", "Mac", "Mac"),
                       count = c(___, ___, ___, ___))
 
 ```
+  
   * Do these percentages provide any indication of an association between phone and laptop preferences?
   * We now contextualize this scenario with some observed data. You collected surveys on laptop and phone preferences in Atlanta, Seattle and Washington, D.C. You can download this (fictional) dataset below: \
   
@@ -65,7 +66,7 @@ d <- bind_rows(d1,d2,d3) |>
     csv2 = FALSE
   )
 ```
-\
+
   * Filter the data to return only participants surveyed in Atlanta ,`atl`. What were the percentages of participants overall who preferred Macs and iPhones? 
   * Use `count()` to determine the frequencies of the four possible combinations of laptop and phone preferences. Join these counts with the expected counts (hint: be careful about your choice of keys here) you calculated manually above and add a column of differences between your observed and expected counts. 
   * What assumption goes into the expected counts we calculated above and, beyond random sampling, why might the observed counts deviate from the expected counts? 
