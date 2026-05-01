@@ -55,7 +55,7 @@ generate_multibinom <- function(p_iphone, p_mac, p_iphone_mac, n) {
 d1 <- generate_multibinom(0.7,0.6,0.8, 200) |> mutate(location = "atl")
 d2 <- generate_multibinom(0.4,0.6,0.7,300) |> mutate(location = "seattle")
 d3 <- generate_multibinom(0.1,0.7,0.5,250) |> mutate(location = "dc")
-d <- bind_rows(d1,d2,d3) |>
+bind_rows(d1,d2,d3) |>
   download_this(
     output_name = "surveys",
     output_extension = ".csv",
