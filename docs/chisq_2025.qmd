@@ -164,7 +164,6 @@ $$
 
 ```{r}
 #| eval: false
-#| echo: false
 b1_boot <- map(1:10000, \(i) {
   tibble(OR = boot(____) |>
     calc_OR("iphone","android", "mac","pc")) |> log()
