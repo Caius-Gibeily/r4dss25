@@ -32,6 +32,7 @@ website:
           - stats_journal_club.qmd
           - rm-anova_2025.qmd
           - chisq_2025.qmd
+          - project_work_2.qmd
           
 theme:
   light: cosmo
