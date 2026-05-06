@@ -15,9 +15,9 @@ By next Wednesday, you should be prepared to present your work, together with a 
   
   * Run an omnibus test (ANOVA or chi-square) to assess the overall relationship between the two variables, taking into account repeated observations if relevant. Calculate an appropriate measure of effect size. Use a resampling technique (bootstrapping or permutation) to estimate the statistical significance. 
   
-  * Irrespective of the outcome of the omnibus test, perform follow-up post-hoc tests (e.g., pairwise comparisons of means or analysis of standardized residuals). Create a table that includes the uncorrected p-values as well as p-values adjusted for multiple comparisons using two approaches: one that adjusts each comparison separately (for example Bonferroni or FDR), and one that directly accounts for multiple testing through permutation.
+  * Irrespective of the outcome of the omnibus test, perform follow-up post hoc tests (e.g., pairwise comparisons of means or analysis of standardized residuals). Create a table that includes the uncorrected p-values as well as p-values adjusted for multiple comparisons using two approaches: one that adjusts each comparison separately (for example Bonferroni or FDR), and one that directly accounts for multiple testing through permutation.
   
-  * Finally, extend your earlier visualization to summarize the post-hoc results. Add information about the pairwise comparisons to the plot, indicating significance using both uncorrected and adjusted p-values. The plot should clearly show how the interpretation of the results changes depending on whether multiple comparisons are accounted for.
+  * Finally, extend your earlier visualization to summarize the post hoc results. Add information about the pairwise comparisons to the plot, indicating significance using both uncorrected and adjusted p-values. The plot should clearly show how the interpretation of the results changes depending on whether multiple comparisons are accounted for.
 
 2. In this exercise, you will analyze the relationship between two variables in your dataset using several different approaches. The goal is to compare how different ways of representing the same data affect the results you obtain.
 
