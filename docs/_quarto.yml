@@ -33,6 +33,7 @@ website:
           - rm-anova_2025.qmd
           - chisq_2025.qmd
           - project_work_2.qmd
+          - linear_regression_2025.qmd
           
 theme:
   light: cosmo
