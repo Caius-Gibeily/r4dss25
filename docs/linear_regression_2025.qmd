@@ -1,5 +1,5 @@
 ---
-title: "Linear Regression"
+title: "Session 20: Linear Regression"
 format: html
 ---
 
