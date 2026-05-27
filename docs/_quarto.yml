@@ -35,6 +35,7 @@ website:
           - project_work_2.qmd
           - linear_regression_2025.qmd
           - Multiple_regression_2025.qmd
+          - p_hacking_2025.qmd
           
 theme:
   light: cosmo
