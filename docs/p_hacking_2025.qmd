@@ -374,7 +374,7 @@ If you are a *p-hacker*, consider doing the following:
 -   Transform and/or discretize your variables until the desired result is achieved
 -   Eliminate outliers using different techniques or thresholds
 -   Test any and all combination of variables: include or withhold different dependent variables, test multiple outcome variables and add/remove covariates 
--   Try subgroup analyses, including the presence or absence of interaction terms
+-   Try subsetting your data for separate subgroup analyses (e.g., analyzing only one Site or one Sex), as well as testing models with and without explicit interaction terms.
 -   If running an ANOVA, debate different post hoc correction methods and rationalize which one to use based on your findings
 -   Decide on what your initial hypotheses are after knowing the data. Consider selectively reporting the variables that support your narrative rather than the trivia of reporting everything you tried
 -   Prepare persuasive figures to illustrate your results, with a focus on showcasing your significant findings rather than any effect sizes
@@ -495,13 +495,19 @@ if (run2 >= 1) {
 
 <br> 
 
--   While your initial power analyses suggested an n of 90, how reliable are power analyses anyway? If you're p-hacking, why not try rerunning your analyses on batches of data: 60-65-70, or even 1 at a time? 
+-   While your initial power analyses suggested an n of 90, how reliable are power analyses anyway?. Now that you have the extra 30 participants, you could combine the datasets. If you are a p-hacker, simulate 'peeking' at your data: rerun your analysis at different samples, i.e. $n = 60$, $n = 65$, $n = 70$, and so on, adding a few rows at a time until your $p$-value of interest crosses the threshold, then stop!  If you're p-hacking, 
+
 -   Just like Q5, please prepare your findings in a Quarto document and be ready to present your analyses to the rest of the group. 
 
 7.  For both datasets, answer the following:
+
 -   Which analytic choices most changed your conclusions?
--   How many analyses did you attempt before choosing the ones you reported?
--   As the p-hacker, did you find yourself rationalizing the results you encountered? Why might these rationalizations creep into data analysis and how do you prevent them?
+
+-   *If you were the p-hacker*, how many unique combinations did you try before choosing the ones you reported? 
+
+-   Did you find yourself rationalizing the results you encountered? Why might these rationalizations creep into data analysis and how would you prevent them?
+
+-   *If you were the honest analyst*, did you feel a pressure to modify your analyses when your pre-registered plan yielded results you weren't expecting? 
 
 8.  Which p-hacking strategies did the authors find to inflate the false positive rate the most?
 -   Is p-hacking a phenomenon of just small samples? Which strategies appear to worsen with increasing sample size?
