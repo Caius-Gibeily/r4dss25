@@ -28,7 +28,7 @@ In the following section, we leave the manipulation of data open-ended to highli
 -   What constitutes an outlier? When might outlier removal be justified and how might it be exploited?
 
 -   Let's take a look at two common outlier removal approaches: interquartile range (IQR) fencing and thresholding based on the z-score. 
--   In IQR fencing, data are removed if they are are less than Q1 - 1.5 \* IQR or greater than Q3 + 1.5 \* IQR. Complete the function below to perform IQR fencing across a set of groups 
+-   In IQR fencing, data are removed if they are are less than Q1 - 1.5 \* IQR or greater than Q3 + 1.5 \* IQR:
 
 ```{r}
 #| eval: false
