@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./Multiple_regression_2025.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -316,9 +317,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Data Science and Statistics in R for Fellowship
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Variance_2025.html">R for Statistics 2026</a></li><li class="breadcrumb-item"><a href="./p_hacking_2025.html">Bioscientist’s Guide to P-hacking (and to never p-hacking again)</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -498,6 +497,12 @@ window.Quarto = {
  <span class="menu-text">Session 21: Multiple Regression</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./p_hacking_2025.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Bioscientist’s Guide to P-hacking (and to never p-hacking again)</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -510,7 +515,7 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Variance_2025.html">R for Statistics 2026</a></li><li class="breadcrumb-item"><a href="./p_hacking_2025.html">Bioscientist’s Guide to P-hacking (and to never p-hacking again)</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Bioscientist’s Guide to P-hacking (and to never p-hacking again)</h1>
 </div>
@@ -549,7 +554,7 @@ window.Quarto = {
 <ul>
 <li><p>What constitutes an outlier? When might outlier removal be justified and how might it be exploited?</p></li>
 <li><p>Let’s take a look at two common outlier removal approaches: interquartile range (IQR) fencing and thresholding based on the z-score.</p></li>
-<li><p>In IQR fencing, data are removed if they are are less than Q1 - 1.5 * IQR or Q3 + 1.5 * IQR. Complete the function below to perform IQR fencing across a set of groups</p></li>
+<li><p>In IQR fencing, data are removed if they are are less than Q1 - 1.5 * IQR or greater than Q3 + 1.5 * IQR. Complete the function below to perform IQR fencing across a set of groups</p></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>iqr_fence <span class="ot">&lt;-</span> <span class="cf">function</span>(data, variable, value) {</span>
@@ -614,8 +619,17 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p><br> - Visualize the data per group. Consider two alternative approaches to this visualization. In the first, try to emphasize the between-group differences in means to persuade your reader. You could, for example, take your pick of a simple bar chart or line graph. In the second, we’d like you to visualize as much of the underlying data as possible (e.g.&nbsp;violin and dot plot). - Let’s now search for significance! Start by running an ANOVA using any approach we’ve discussed in previous sessions.<br>
-- Try going ahead anyway with multiple comparisons, using the <code>rstatix::pairwise_t_test</code> to test all pairwise differences using Bonferroni. Change the correction method from Bonferroni to FDR just to make sure we’re not being too conservative (might as well check right?). - What if outliers are obscuring any true differences? Try a few different cutoffs and perform ANOVAs for each cutoff. Record your F-statistics and p-values for each test. - Once you found a cutoff yielding a significant result, try running a post hoc test and prepare a table showing the Cohen’s d/t-statistic for each pairwise difference of means and its p-value - Let’s turn to the IQR fence. Try the same analyses, beginning with an omnibus test and then multiple comparisons. - Compare the outcome when you use Bonferroni vs.&nbsp;FDR correction. When might choosing among different multiple testing approaches constitute a form of p-hacking? - Once you have your candidate method, report your findings as if you were writing a results section or abstract, providing a brief explanation of the methods you used. There’s no need to list all the combinations you tried, of course, they were just the groundwork before landing on the <em>correct</em> method.</p>
+<p><br></p>
+<ul>
+<li><p>Visualize the data per group. Consider two alternative approaches to this visualization. In the first, try to emphasize the between-group differences in means to persuade your reader. You could, for example, take your pick of a simple bar chart or line graph. In the second, we’d like you to visualize as much of the underlying data as possible (e.g.&nbsp;violin and dot plot).</p></li>
+<li><p>Let’s now search for significance! Start by running an ANOVA using any approach we’ve discussed in previous sessions.</p></li>
+<li><p>Try going ahead anyway with multiple comparisons, using the <code>rstatix::pairwise_t_test</code> to test all pairwise differences using Bonferroni. Change the correction method from Bonferroni to FDR just to make sure we’re not being too conservative (might as well check right?).</p></li>
+<li><p>What if outliers are obscuring any true differences? Try a few different cutoffs and perform ANOVAs for each cutoff. Record your F-statistics and p-values for each test.</p></li>
+<li><p>Once you found a cutoff yielding a significant result, try running a post hoc test and prepare a table showing the Cohen’s d/t-statistic for each pairwise difference of means and its p-value</p></li>
+<li><p>Let’s turn to the IQR fence. Try the same analyses, beginning with an omnibus test and then multiple comparisons.</p></li>
+<li><p>Compare the outcome when you use Bonferroni vs.&nbsp;FDR correction. When might choosing among different multiple testing approaches constitute a form of p-hacking?</p></li>
+<li><p>Once you have your candidate method, report your findings as if you were writing a results section or abstract, providing a brief explanation of the methods you used. There’s no need to list all the combinations you tried, of course, they were just the groundwork before landing on the <em>correct</em> method.</p></li>
+</ul>
 <ol start="3" type="1">
 <li>Let’s take a look at discretization. We touched on the issues of discretization during the previous project work session. Using simulation, we found that binning the predictor variable from a continuous one to 6 and then 3 bins before binning both outcome and predictor successively reduced our power of finding a true effect. But for the p-hacker, discretization provides yet another lever to test multiple different analytic combinations and exploit sampling error to try extracting something purportedly significant. The number of bins, placement of intervals and equality of bin sizes are all features that can be manipulated and the winning combination justified <em>post hoc</em> in the results. We provide you with the next function in the p-hacker’s toolbox:</li>
 </ol>
@@ -637,6 +651,7 @@ window.Quarto = {
 <ul>
 <li>Download the following dataset, containing predictor (<code>x</code>) and outcome (<code>y</code>) variables:</li>
 </ul>
+<p><br></p>
 <div class="text-center">
 <div class="cell">
 <div class="cell-output-display">
@@ -669,6 +684,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<p><br></p>
 <ul>
 <li>Since both are continuous, why don’t we start by fitting a simple linear regression using techniques we’ve already covered in session 20. Plot the data and overlay the line and its standard error using <code>geom_ribbon</code>. What values did you see for the intercept and gradient? What is the <span class="math inline">\(R^2\)</span> and its p-value?
 <ul>
@@ -724,6 +740,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Now it’s your opportunity to indulge in either some significantly reputable or refutably significant data analysis. Below we have provided two datasets, where you will analyze them as either a p-hacker, a data analyst with more statistical integrity, or one of each. 5. Download the first dataset below:</p>
+<p><br></p>
 <div class="text-center">
 <div class="cell">
 <div class="cell-output-display">
@@ -774,24 +791,24 @@ window.Quarto = {
 <p><br></p>
 <div class="text-center">
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="317" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 316;"><span id="cb5-317"><a href="#cb5-317" aria-hidden="true" tabindex="-1"></a>viewof run1 <span class="op">=</span> {</span>
-<span id="cb5-318"><a href="#cb5-318" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> button <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;button style="background-color: white; color: black;"&gt;Find role&lt;/button&gt;`</span><span class="op">;</span></span>
-<span id="cb5-319"><a href="#cb5-319" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> clickCount <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb5-320"><a href="#cb5-320" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-321"><a href="#cb5-321" aria-hidden="true" tabindex="-1"></a>  button<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb5-322"><a href="#cb5-322" aria-hidden="true" tabindex="-1"></a>    clickCount<span class="op">++;</span></span>
-<span id="cb5-323"><a href="#cb5-323" aria-hidden="true" tabindex="-1"></a>    button<span class="op">.</span><span class="at">value</span> <span class="op">=</span> clickCount<span class="op">;</span></span>
-<span id="cb5-324"><a href="#cb5-324" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb5-325"><a href="#cb5-325" aria-hidden="true" tabindex="-1"></a>    <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> {</span>
-<span id="cb5-326"><a href="#cb5-326" aria-hidden="true" tabindex="-1"></a>      button<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">backgroundColor</span> <span class="op">=</span> <span class="st">'red'</span><span class="op">;</span></span>
-<span id="cb5-327"><a href="#cb5-327" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span>
-<span id="cb5-328"><a href="#cb5-328" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-329"><a href="#cb5-329" aria-hidden="true" tabindex="-1"></a>    button<span class="op">.</span><span class="fu">dispatchEvent</span>(<span class="kw">new</span> <span class="bu">CustomEvent</span>(<span class="st">'input'</span>))<span class="op">;</span></span>
-<span id="cb5-330"><a href="#cb5-330" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
-<span id="cb5-331"><a href="#cb5-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-332"><a href="#cb5-332" aria-hidden="true" tabindex="-1"></a>  button<span class="op">.</span><span class="at">value</span> <span class="op">=</span> clickCount<span class="op">;</span> </span>
-<span id="cb5-333"><a href="#cb5-333" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> button<span class="op">;</span></span>
-<span id="cb5-334"><a href="#cb5-334" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="332" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 331;"><span id="cb5-332"><a href="#cb5-332" aria-hidden="true" tabindex="-1"></a>viewof run1 <span class="op">=</span> {</span>
+<span id="cb5-333"><a href="#cb5-333" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> button <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;button style="background-color: white; color: black;"&gt;Find role&lt;/button&gt;`</span><span class="op">;</span></span>
+<span id="cb5-334"><a href="#cb5-334" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> clickCount <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-335"><a href="#cb5-335" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-336"><a href="#cb5-336" aria-hidden="true" tabindex="-1"></a>  button<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb5-337"><a href="#cb5-337" aria-hidden="true" tabindex="-1"></a>    clickCount<span class="op">++;</span></span>
+<span id="cb5-338"><a href="#cb5-338" aria-hidden="true" tabindex="-1"></a>    button<span class="op">.</span><span class="at">value</span> <span class="op">=</span> clickCount<span class="op">;</span></span>
+<span id="cb5-339"><a href="#cb5-339" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-340"><a href="#cb5-340" aria-hidden="true" tabindex="-1"></a>    <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb5-341"><a href="#cb5-341" aria-hidden="true" tabindex="-1"></a>      button<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">backgroundColor</span> <span class="op">=</span> <span class="st">'red'</span><span class="op">;</span></span>
+<span id="cb5-342"><a href="#cb5-342" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb5-343"><a href="#cb5-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-344"><a href="#cb5-344" aria-hidden="true" tabindex="-1"></a>    button<span class="op">.</span><span class="fu">dispatchEvent</span>(<span class="kw">new</span> <span class="bu">CustomEvent</span>(<span class="st">'input'</span>))<span class="op">;</span></span>
+<span id="cb5-345"><a href="#cb5-345" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb5-346"><a href="#cb5-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-347"><a href="#cb5-347" aria-hidden="true" tabindex="-1"></a>  button<span class="op">.</span><span class="at">value</span> <span class="op">=</span> clickCount<span class="op">;</span> </span>
+<span id="cb5-348"><a href="#cb5-348" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> button<span class="op">;</span></span>
+<span id="cb5-349"><a href="#cb5-349" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -815,7 +832,7 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiaW5wdXQiOlsicnVu
 <li>Transform and/or discretize your variables until the desired result is achieved</li>
 <li>Eliminate outliers using different techniques or thresholds</li>
 <li>Test any and all combination of variables: include or withhold different dependent variables, test multiple outcome variables and add/remove covariates</li>
-<li>Try subgroup analyses, including the presence or absence of interaction terms</li>
+<li>Try subsetting your data for separate subgroup analyses (e.g., analyzing only one Site or one Sex), as well as testing models with and without explicit interaction terms.</li>
 <li>If running an ANOVA, debate different post hoc correction methods and rationalize which one to use based on your findings</li>
 <li>Decide on what your initial hypotheses are after knowing the data. Consider selectively reporting the variables that support your narrative rather than the trivia of reporting everything you tried</li>
 <li>Prepare persuasive figures to illustrate your results, with a focus on showcasing your significant findings rather than any effect sizes</li>
@@ -846,6 +863,7 @@ Presenting your findings
 <ol start="6" type="1">
 <li>In this neuroimaging study, a preliminary 60 participants were collected. Here are their data:</li>
 </ol>
+<p><br></p>
 <div class="text-center">
 <div class="cell">
 <div class="cell-output-display">
@@ -878,6 +896,7 @@ Presenting your findings
 </div>
 </div>
 </div>
+<p><br></p>
 <ul>
 <li>Since then, you collected 30 more:</li>
 </ul>
@@ -923,24 +942,24 @@ Presenting your findings
 <p><br></p>
 <div class="text-center">
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="441" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 440;"><span id="cb6-441"><a href="#cb6-441" aria-hidden="true" tabindex="-1"></a>viewof run2 <span class="op">=</span> {</span>
-<span id="cb6-442"><a href="#cb6-442" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> button <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;button style="background-color: white; color: black;"&gt;Find role&lt;/button&gt;`</span><span class="op">;</span></span>
-<span id="cb6-443"><a href="#cb6-443" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> clickCount <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb6-444"><a href="#cb6-444" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-445"><a href="#cb6-445" aria-hidden="true" tabindex="-1"></a>  button<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb6-446"><a href="#cb6-446" aria-hidden="true" tabindex="-1"></a>    clickCount<span class="op">++;</span></span>
-<span id="cb6-447"><a href="#cb6-447" aria-hidden="true" tabindex="-1"></a>    button<span class="op">.</span><span class="at">value</span> <span class="op">=</span> clickCount<span class="op">;</span></span>
-<span id="cb6-448"><a href="#cb6-448" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-449"><a href="#cb6-449" aria-hidden="true" tabindex="-1"></a>    <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> {</span>
-<span id="cb6-450"><a href="#cb6-450" aria-hidden="true" tabindex="-1"></a>      button<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">backgroundColor</span> <span class="op">=</span> <span class="st">'orange'</span><span class="op">;</span></span>
-<span id="cb6-451"><a href="#cb6-451" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span>
-<span id="cb6-452"><a href="#cb6-452" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-453"><a href="#cb6-453" aria-hidden="true" tabindex="-1"></a>    button<span class="op">.</span><span class="fu">dispatchEvent</span>(<span class="kw">new</span> <span class="bu">CustomEvent</span>(<span class="st">'input'</span>))<span class="op">;</span></span>
-<span id="cb6-454"><a href="#cb6-454" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
-<span id="cb6-455"><a href="#cb6-455" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-456"><a href="#cb6-456" aria-hidden="true" tabindex="-1"></a>  button<span class="op">.</span><span class="at">value</span> <span class="op">=</span> clickCount<span class="op">;</span> </span>
-<span id="cb6-457"><a href="#cb6-457" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> button<span class="op">;</span></span>
-<span id="cb6-458"><a href="#cb6-458" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="460" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 459;"><span id="cb6-460"><a href="#cb6-460" aria-hidden="true" tabindex="-1"></a>viewof run2 <span class="op">=</span> {</span>
+<span id="cb6-461"><a href="#cb6-461" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> button <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;button style="background-color: white; color: black;"&gt;Find role&lt;/button&gt;`</span><span class="op">;</span></span>
+<span id="cb6-462"><a href="#cb6-462" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> clickCount <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-463"><a href="#cb6-463" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-464"><a href="#cb6-464" aria-hidden="true" tabindex="-1"></a>  button<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb6-465"><a href="#cb6-465" aria-hidden="true" tabindex="-1"></a>    clickCount<span class="op">++;</span></span>
+<span id="cb6-466"><a href="#cb6-466" aria-hidden="true" tabindex="-1"></a>    button<span class="op">.</span><span class="at">value</span> <span class="op">=</span> clickCount<span class="op">;</span></span>
+<span id="cb6-467"><a href="#cb6-467" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-468"><a href="#cb6-468" aria-hidden="true" tabindex="-1"></a>    <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb6-469"><a href="#cb6-469" aria-hidden="true" tabindex="-1"></a>      button<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">backgroundColor</span> <span class="op">=</span> <span class="st">'orange'</span><span class="op">;</span></span>
+<span id="cb6-470"><a href="#cb6-470" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb6-471"><a href="#cb6-471" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-472"><a href="#cb6-472" aria-hidden="true" tabindex="-1"></a>    button<span class="op">.</span><span class="fu">dispatchEvent</span>(<span class="kw">new</span> <span class="bu">CustomEvent</span>(<span class="st">'input'</span>))<span class="op">;</span></span>
+<span id="cb6-473"><a href="#cb6-473" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb6-474"><a href="#cb6-474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-475"><a href="#cb6-475" aria-hidden="true" tabindex="-1"></a>  button<span class="op">.</span><span class="at">value</span> <span class="op">=</span> clickCount<span class="op">;</span> </span>
+<span id="cb6-476"><a href="#cb6-476" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> button<span class="op">;</span></span>
+<span id="cb6-477"><a href="#cb6-477" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="declaration">
 
@@ -960,16 +979,17 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiaW5wdXQiOlsicnVu
 </div>
 <p><br></p>
 <ul>
-<li>While your initial power analyses suggested an n of 90, how reliable are power analyses anyway? If you’re p-hacking, why not try rerunning your analyses on batches of data: 60-65-70, or even 1 at a time?</li>
-<li>Just like Q5, please prepare your findings in a Quarto document and be ready to present your analyses to the rest of the group.</li>
+<li><p>While your initial power analyses suggested an n of 90, how reliable are power analyses anyway?. Now that you have the extra 30 participants, you could combine the datasets. If you are a p-hacker, simulate ‘peeking’ at your data: rerun your analysis at different samples, i.e.&nbsp;<span class="math inline">\(n = 60\)</span>, <span class="math inline">\(n = 65\)</span>, <span class="math inline">\(n = 70\)</span>, and so on, adding a few rows at a time until your <span class="math inline">\(p\)</span>-value of interest crosses the threshold, then stop! If you’re p-hacking,</p></li>
+<li><p>Just like Q5, please prepare your findings in a Quarto document and be ready to present your analyses to the rest of the group.</p></li>
 </ul>
 <ol start="7" type="1">
 <li>For both datasets, answer the following:</li>
 </ol>
 <ul>
-<li>Which analytic choices most changed your conclusions?</li>
-<li>How many analyses did you attempt before choosing the ones you reported?</li>
-<li>As the p-hacker, did you find yourself rationalizing the results you encountered? Why might these rationalizations creep into data analysis and how do you prevent them?</li>
+<li><p>Which analytic choices most changed your conclusions?</p></li>
+<li><p><em>If you were the p-hacker</em>, how many unique combinations did you try before choosing the ones you reported?</p></li>
+<li><p>Did you find yourself rationalizing the results you encountered? Why might these rationalizations creep into data analysis and how would you prevent them?</p></li>
+<li><p><em>If you were the honest analyst</em>, did you feel a pressure to modify your analyses when your pre-registered plan yielded results you weren’t expecting?</p></li>
 </ul>
 <ol start="8" type="1">
 <li>Which p-hacking strategies did the authors find to inflate the false positive rate the most?</li>
@@ -1426,6 +1446,15 @@ window._ojs.runtime.interpretFromScriptTags();
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Multiple_regression_2025.html" class="pagination-link" aria-label="Session 21: Multiple Regression">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Session 21: Multiple Regression</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

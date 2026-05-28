@@ -1,5 +1,5 @@
 ---
-title: "Bioscientist's Guide to P-hacking (and to never p-hacking again)"
+title: "Session 22: Bioscientist's Guide to P-hacking (and to never p-hacking again)"
 format: live-html
 engine: knitr
 webr:
