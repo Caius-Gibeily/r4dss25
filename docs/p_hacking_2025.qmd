@@ -158,7 +158,7 @@ dat2 |>
     - Choose interval widths you can find ad hoc justifications for by looking at the ggplot 
     - Binning both x and y variables (run `discretize()` twice, passing `y, binned = "binned_y"` on the second pass) and run a $\chi^2$ test 
 -   Any luck? Let's run some post hocs then and see if anything survived correction. Remember that we can always fall back on FDR if we're being too conservative with Bonferroni.
--   Excellent! Now write a summary paragraph of your findings and prepare a plot to illustrate the significant differences you found 
+-   Excellent! Now write a summary paragraph of your findings and prepare a plot to illustrate the significant differences you found. 
 
 We hope by now that, alongside the paper, we've belabored the point that the more combinations you try, the greater the likelihood of identifying a spurious significant result. Consider it a 'shadow' family-wise error rate, since these prior exploratory analyses are rarely published in the final paper/abstract. When you report post hoc tests and the correction method used, you have essentially only accounted for the batch of pairwise tests performed - something required in any reputable journal - and not the multiple analytic combinations (i.e. outlier cutoffs, alternative discretizations and transformations) you tried before landing on the winning combination. 
 
@@ -495,7 +495,7 @@ if (run2 >= 1) {
 
 <br> 
 
--   While your initial power analyses suggested an n of 90, how reliable are power analyses anyway?. Now that you have the extra 30 participants, you could combine the datasets. If you are a p-hacker, simulate 'peeking' at your data: rerun your analysis at different samples, i.e. $n = 60$, $n = 65$, $n = 70$, and so on, adding a few rows at a time until your $p$-value of interest crosses the threshold, then stop!  If you're p-hacking, 
+-   While your initial power analyses suggested an n of 90, how reliable are power analyses anyway?. Now that you have the extra 30 participants, you could combine the datasets. If you are a p-hacker, simulate 'peeking' at your data: rerun your analysis at different samples, i.e. $n = 60$, $n = 65$, $n = 70$, and so on, adding a few rows at a time until your $p$-value of interest crosses the threshold, then stop!
 
 -   Just like Q5, please prepare your findings in a Quarto document and be ready to present your analyses to the rest of the group. 
 
