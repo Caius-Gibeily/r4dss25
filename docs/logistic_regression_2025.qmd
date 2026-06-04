@@ -5,7 +5,7 @@ format: html
 
 In this session, we will learn about logistic regression. There are several excellent StatQuest videos that cover this topic, and as usual we will combine them with custom exercises. Let’s get right to it. Start by watching [this video](https://youtu.be/vN5cNN2-HWE?si=QrBTTVfvaNtxC7OH){target="_blank"} (*Logistic Regression Details Pt1: Coefficients*). 
 
-Here is data we can use to work through some examples demonstrating how to think about coefficients from a logistic regression model: 
+Here is data we can use to work through some examples, demonstrating how to think about coefficients from a logistic regression model: 
 
 ```{r}
 #| eval: true
