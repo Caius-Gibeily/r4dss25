@@ -38,6 +38,7 @@ website:
           - p_hacking_2025.qmd
           - logistic_regression_2025.qmd
           - Non_linear_2025.qmd
+          - project_work-III.qmd
           
 theme:
   light: cosmo
