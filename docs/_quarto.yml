@@ -39,6 +39,7 @@ website:
           - logistic_regression_2025.qmd
           - Non_linear_2025.qmd
           - project_work-III.qmd
+          - FDA_2025.qmd
           
 theme:
   light: cosmo
