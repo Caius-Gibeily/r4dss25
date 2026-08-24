@@ -1,35 +1,21 @@
 ---
-title: "Welcome to R4DSS25"
+title: "Welcome to R4DSS26"
 format: html
 ---
 
-### Welcome to R for Data Science and Statistics 2025 (R4DSS)!
+### Welcome to R for Data Science and Statistics 2026 (R4DSS)!
 
 These trainings aim to equip you with the tools you need to feel confident in performing your own data analayses using R. Why R and not, say, Excel or SPSS? While such software are intuitive to use, they offer less flexibility than the typical suite of scientific programming languages. R's well organised and documented syntax, abundance of libraries for analysis and visualization and established community of contributors make it a powerful ally when mastered.
 
 No matter your prior familiarity with R or data science techniques more broadly, we hope you'll gain something from these sessions. The course will be organised as follows:
 
--   Weekly virtual classes on Wednesday at 9am
+-   Weekly virtual classes on Thursday at 9am
 
 -   One-on-one meetings with Hasse to discuss any challenges encountered in the exercises and track personal growth
 
 -   Weekly readings and exercises from the 2nd Edition of [R for Data Science](https://r4ds.hadley.nz/) by Hadley Wickham, Mine Cetinkaya-Rundel and Garrett Grolemund and the corresponding `r4ds.tutorials` package
 
 ### Getting started: installing R and RStudio (skip if they are already installed)
-
-If you haven't already, please visit [Posit](https://posit.co/download/rstudio-desktop/) for instructions on downloading and installing R and RStudio. The order is important: please begin by installing R and then proceed to the RStudio installation. Ensure that you choose the correct operating system.
-
-![](images/clipboard-1657930642.png)
-
-If you are using Windows, click the "Install R for Windows" option and then choose the `base` installation. For Mac, you will likely be using an Apple Silicon edition, in which case, please select the following:
-
-![](images/clipboard-1856791698.png)
-
-Once R and then RStudio have finished installing, execute RStudio and type `R.version` into the console in the lower left panel. If R has installed correctly, you should see details on your version print into the console. Mine looks like:
-
-![](images/clipboard-3704723856.png){width="434"}
-
-If this is working, congratulations!
 
 ### Creating a new project in RStudio
 #### Option 1: Create a New Project from Scratch

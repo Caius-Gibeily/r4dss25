@@ -36,10 +36,10 @@ Below are some useful pieces of information to help you navigate the tutorials.
 
 **Step 3.5: One-on-one meetings.** If what is described above makes it sound like you will be learning the material all on your own, don’t worry. You will have a one-on-one mentoring meeting with Hasse to go over your work when you have completed about the first half of the book chapter exercises. These meetings are mandatory for fellows but optional for graduate students.
 
-Meeting on Monday works best — it gives you some time to work on the exercises beforehand, and still finish the rest afterward, before we meet again as a group on Wednesday to continue discussing the materials. Try to schedule the meeting for Monday morning, since Hasse is based in Sweden and earlier times work best with the time difference. If Monday doesn’t work, Friday (the week before) or Tuesday are acceptable alternatives.
+Meeting on Tuesday works best — it gives you some time to work on the exercises beforehand, and still finish the rest afterward, before we meet again as a group on Thursday to continue discussing the materials. Try to schedule the meeting for Tuesday morning, since Hasse is based in Sweden and earlier times work best with the time difference. If Tuesday doesn’t work, Monday or Wednesday are acceptable alternatives.
 
 To schedule your meeting, just send Hasse a message on Slack with some times when you are available. The meeting is a chance for you to get help with the exercises, ask questions, and a chance for you and Hasse to get to know each other better. We’ll aim for about 30 minutes, but if you need more help/time, you can request a longer meeting.
 
 **Step 4: Send Answers.** Send Hasse both the HTML file containing the tutorial exercise answers and the R script file with the book chapter exercise answers via Slack no later than the end of the day on Tuesday. 
 
-**Step 5: Wednesday group discussion.** We’ll meet as a group every Wednesday to discuss what you’ve been learning and reflect on your progress. 
+**Step 5: Thursday group discussion.** We’ll meet as a group every Thursday to discuss what you’ve been learning and reflect on your progress. 
