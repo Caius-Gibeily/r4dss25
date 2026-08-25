@@ -9,7 +9,7 @@ website:
   page-navigation: true
   sidebar:
     contents:
-      - section: R for Data Science 2026-27
+      - section: R for Data Science 2025-2026
         contents:
           - intro.qmd
           - Session_1.qmd
@@ -19,7 +19,7 @@ website:
           - Session 5.qmd
           - Session_6.qmd
           - Session_7.qmd
-      - section: R for Statistics 2026-2027
+      - section: R for Statistics 2025-2026
         contents: 
           - Variance_2025.qmd
           - cov.qmd
